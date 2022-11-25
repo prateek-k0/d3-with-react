@@ -1,51 +1,42 @@
-import * as React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
+import { Divider } from '../Common/Divider';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSidebarStatus } from '../../Store/sidebarSlice';
 import { toggleOrSetSidebar } from '../../Store/sidebarSlice';
+import { barChartGroupId, BarChartGroupAccordion } from '../Graphs/bar-charts/Bar-charts-group';
+import { pieChartGroupId, PieChartGroupAccordion } from '../Graphs/pie-charts/Pie-charts-group';
 
-export default function TemporaryDrawer() {
+export default function SidebarDrawer() {
   const sideBarStatus = useSelector(getSidebarStatus);
   const dispatch = useDispatch();
+  const [expandedAcc, setExpandedAcc] = useState(false);
+  
+  const handleChange = useCallback((panelKey) => (event, isExpanded) => {
+    setExpandedAcc(isExpanded ? panelKey : false);
+  }, []);
+
+  useEffect(() => {
+    console.log(expandedAcc);
+  }, [expandedAcc])
 
   const list = () => (
     <Box
       sx={{ width: 250 }}
       role="presentation"
     >
-      <List>
-        {['Item 1', 'Item 2', 'Item 3', 'Item 4'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['Item 5', 'Item 6', 'Item 7'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+      <List sx={{padding: 0}}>
+        <ListItem key={barChartGroupId} sx={{padding: 0}}>
+            <BarChartGroupAccordion expanded={expandedAcc === barChartGroupId} onChange={handleChange(barChartGroupId)} />
+        </ListItem>
+        <Divider />
+        <ListItem key={pieChartGroupId} sx={{padding: 0}}>
+            <PieChartGroupAccordion expanded={expandedAcc === pieChartGroupId} onChange={handleChange(pieChartGroupId)} />
+        </ListItem>
+        <Divider />
       </List>
     </Box>
   );
