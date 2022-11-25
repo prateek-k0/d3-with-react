@@ -20,7 +20,7 @@ export default function SidebarDrawer() {
   }, []);
 
   useEffect(() => {
-    console.log(expandedAcc);
+    // console.log(expandedAcc);
   }, [expandedAcc])
 
   const list = () => (

@@ -4,11 +4,12 @@ import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
-import '@fontsource/space-mono';
+import '@fontsource/space-mono/400.css';
 
 export const Accordion = styled((props) => (
-    <MuiAccordion disableGutters elevation={0} square {...props} />
+    <MuiAccordion disableGutters elevation={0} square {...props} TransitionProps={{ unmountOnExit: true }}/>
   ))(({ theme }) => ({
+    width: '100%',
     '& .Mui-expanded': {
       '& .MuiAccordionSummary-content': {
         opacity: 1,

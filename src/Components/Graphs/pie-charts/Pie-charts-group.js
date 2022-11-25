@@ -8,7 +8,7 @@ export const PieChartGroupAccordion = ({ expanded, onChange }) => {
 
     return (
         <Accordion expanded={expanded} onChange={onChange}>
-            <AccordionSummary id="pie-charts">
+            <AccordionSummary id={pieChartGroupId}>
                 <Typography>Pie Charts</Typography>
             </AccordionSummary>
             <AccordionDetails>
