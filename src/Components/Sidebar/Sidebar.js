@@ -42,10 +42,8 @@ export default function SidebarDrawer() {
   );
 
   return (
-    <div>
         <Drawer anchor='left' open={sideBarStatus} onClose={() => dispatch(toggleOrSetSidebar(false))}>
             {list()}
         </Drawer>
-    </div>
   );
 }
