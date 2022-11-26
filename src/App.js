@@ -2,9 +2,9 @@ import React from "react";
 import ThemeWrapper from "./Components/Themes/Wrapper";
 import AppLayout from "./Components/Layouts/AppLayout";
 import { useRoutes } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import { BCRoutes } from "./Components/Graphs/bar-charts/BC-base";
-import { PCRoutes } from "./Components/Graphs/pie-charts/PC-base";
+
+import { BarChartsRoutes } from "./Components/Graphs/bar-charts/Bar-charts-base";
+import { PieChartsRoutes } from "./Components/Graphs/pie-charts/Pie-charts-base";
 
 const AppRoutes = () => {
   const routesElements = useRoutes([
@@ -13,12 +13,12 @@ const AppRoutes = () => {
       element: <AppLayout />,
       children: [
         {
-          path: 'bc/*',     //Decendant Routes: https://www.robinwieruch.de/react-router-descendant-routes/
-          element: <BCRoutes />
+          path: 'bar-charts/*',     //Decendant Routes: https://www.robinwieruch.de/react-router-descendant-routes/
+          element: <BarChartsRoutes />
         },
         {
-          path: 'pc/*',
-          element: <PCRoutes />
+          path: 'pie-charts/*',
+          element: <PieChartsRoutes />
         }
       ]
     }
@@ -28,11 +28,9 @@ const AppRoutes = () => {
 
 const App = () => {
   return (
-    <Router>
-      <ThemeWrapper>
-        <AppRoutes />
-      </ThemeWrapper>
-    </Router>
+    <ThemeWrapper>
+      <AppRoutes />
+    </ThemeWrapper>
   );
 }
 
