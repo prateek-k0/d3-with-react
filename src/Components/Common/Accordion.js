@@ -5,6 +5,7 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import '@fontsource/space-mono/400.css';
+import ListItemButton from '@mui/material/ListItemButton';
 
 export const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} TransitionProps={{ unmountOnExit: true }}/>
@@ -59,6 +60,18 @@ export const AccordionSummary = styled((props) => (
 }));
 
 export const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-    padding: theme.spacing(2),
+    padding: 0,
     // borderTop: '1px solid rgba(0, 0, 0, .125)',
+}));
+
+export const AccordionLinkButton = styled((props) => (
+  <ListItemButton {...props} />
+))(({ theme }) => ({
+  paddingLeft: '16px',
+  paddingRight: '16px',
+  paddingTop: '12px',
+  paddingBottom: '12px',
+  '&:hover': {
+      transition: '0.15s ease-in',
+  }
 }));

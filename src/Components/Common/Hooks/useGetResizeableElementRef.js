@@ -6,14 +6,14 @@ const useGetResizeableElementRef = (callback) => {
     useLayoutEffect(() => {     
         if(targetRef.current) {
             const target = targetRef.current;
-            const resObs = new ResizeObserver((entries) => {
+            const observerInstsnce = new ResizeObserver((entries) => {
                 entries.forEach((entry) => {
                     callback(entry);
-                })
+                });
             });
-            resObs.observe(target);
+            observerInstsnce.observe(target);
 
-            return () => { resObs.unobserve(target); }
+            return () => { observerInstsnce.unobserve(target); }
         }
     }, [callback]);
     return targetRef;
