@@ -30,16 +30,16 @@ export default function SidebarDrawer() {
       role="presentation"
     >
       <List sx={{padding: 0}}>
+        <ListItem key={areaChartGroupId} sx={{padding: 0}}>
+            <AreaChartGroupAccordion expanded={expandedAcc === areaChartGroupId} onChange={handleChange(areaChartGroupId)} />
+        </ListItem>
+        <Divider />
         <ListItem key={barChartGroupId} sx={{padding: 0}}>
             <BarChartGroupAccordion expanded={expandedAcc === barChartGroupId} onChange={handleChange(barChartGroupId)} />
         </ListItem>
         <Divider />
         <ListItem key={pieChartGroupId} sx={{padding: 0}}>
             <PieChartGroupAccordion expanded={expandedAcc === pieChartGroupId} onChange={handleChange(pieChartGroupId)} />
-        </ListItem>
-        <Divider />
-        <ListItem key={areaChartGroupId} sx={{padding: 0}}>
-            <AreaChartGroupAccordion expanded={expandedAcc === areaChartGroupId} onChange={handleChange(areaChartGroupId)} />
         </ListItem>
         <Divider />
       </List>

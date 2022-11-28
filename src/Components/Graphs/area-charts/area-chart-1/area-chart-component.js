@@ -1,7 +1,8 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
+import '@fontsource/abeezee/400.css'
 import { Typography } from '@mui/material';
 
 const data = [
@@ -63,17 +64,17 @@ const AreaChartComponent = () => {
         areaGenerator: undefined
     });
 
-    const renderGraph = useCallback((container) => {
+    const renderGraph = (container) => {
         prepareData();
         generateColors();
         renderSVG(container);
         renderChart();
-        drawVerticaleLines();
+        drawVerticalLines();
         drawHorizontalLines();
         drawXAxis();
         drawYAxis();
         drawArea();
-    }, []);
+    };
     const graphContRef = useD3(renderGraph, [data.length]);
 
     const renderSVG = (containerD3) => {
@@ -111,7 +112,7 @@ const AreaChartComponent = () => {
             .range(configRef.current.color);
     }
 
-    const drawVerticaleLines = () => {
+    const drawVerticalLines = () => {
         configRef.current.chart.append('g')
             .attr('class', 'grid')
             .call(
@@ -193,13 +194,26 @@ const AreaChartComponent = () => {
             .attr('stroke-linejoin', 'round')
             .attr('stroke-linecap', 'round')
             .attr('stroke-width', configRef.current.lineWidth)
-            .attr('d', (d) => areaGenerator()(d));
+            .attr('d', (d) => areaGenerator()(d))
+            .on('mouseover', (event) => {
+                event.stopPropagation();
+                const element = event.target;
+                const currentID = d3.select(element.parentNode).attr('id');
+                d3.selectAll('g.series')
+                    .attr('opacity', 0.4);
+                d3.select(element.parentNode)
+                    .attr('opacity', 1);
+            }).on('mouseleave', () => {
+                d3.selectAll('g.series')
+                    .attr('opacity', 1);
+            });
+        
 
     }
     
     return (
         <div className='area-chart-1__wrapper'>
-            <Typography sx={{fontSize: '24px', padding: '16px 0 0 36px', fontWeight: '700'}}>Area Chart 1</Typography>
+            <Typography sx={{fontSize: '24px', padding: '16px 0 0 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Area Chart 1</Typography>
             <div ref={graphContRef} className='area-chart-1__cont'></div>
         </div>
     )
