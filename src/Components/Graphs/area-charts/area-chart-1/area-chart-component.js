@@ -198,9 +198,8 @@ const AreaChartComponent = () => {
             .on('mouseover', (event) => {
                 event.stopPropagation();
                 const element = event.target;
-                const currentID = d3.select(element.parentNode).attr('id');
                 d3.selectAll('g.series')
-                    .attr('opacity', 0.4);
+                    .attr('opacity', 0.35);
                 d3.select(element.parentNode)
                     .attr('opacity', 1);
             }).on('mouseleave', () => {
