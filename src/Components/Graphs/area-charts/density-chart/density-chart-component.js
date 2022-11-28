@@ -4,6 +4,7 @@ import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
 import '@fontsource/abeezee/400.css'
 import { Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 const data = [
     {
@@ -80,6 +81,7 @@ const DensityAreaChart = () => {
         color: ['#8FD399', '#DC67CE', '#9657D5']
     });
 
+    const themeMode = useSelector(state => state.theme.darkMode);
     const renderSVG = useCallback((containerD3) => {
         const contHeight = 640;
         configRef.current.height = contHeight - configRef.current.margin.top - configRef.current.margin.bottom;
@@ -184,7 +186,7 @@ const DensityAreaChart = () => {
             .append('path')
             .attr('class', 'area-cat-3 area-path')
             .attr('transform', `translate(${margin.left - 15}, ${margin.top - 20})`)
-            .style('fill', () => cat3color)
+            .style('fill', () => (themeMode ? 'crimson' : cat3color))
             .attr('opacity', 0.1)
             .attr('d', () => areacat3(data))
             .on('mouseover', () => {
@@ -192,11 +194,10 @@ const DensityAreaChart = () => {
             }).on('mouseleave', () => {
                 d3.selectAll('.area-path').attr('opacity', 0.1);
             });
-    }, [])
+    }, [themeMode])
 
     const renderGraph = useCallback((container) => {
         renderSVG(container);
-        // renderXAxis();
         renderGrid();
         createPaths(configRef.current.chart, xScale(), yScale(), configRef.current.margin)
     }, [renderGrid, renderSVG, xScale, yScale, createPaths]);
