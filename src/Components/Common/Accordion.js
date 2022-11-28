@@ -5,6 +5,7 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import '@fontsource/space-mono/400.css';
+import '@fontsource/abeezee/400.css'
 import ListItemButton from '@mui/material/ListItemButton';
 
 export const Accordion = styled((props) => (
@@ -37,7 +38,7 @@ export const Accordion = styled((props) => (
 
 export const AccordionSummary = styled((props) => (
     <MuiAccordionSummary
-      expandIcon={<PlayArrowOutlinedIcon sx={{ fontSize: '1.2rem' }} />}
+      expandIcon={<PlayArrowOutlinedIcon sx={{ fontSize: '1.3rem' }} />}
       {...props}
     />
   ))(({ theme }) => ({
@@ -54,7 +55,7 @@ export const AccordionSummary = styled((props) => (
       marginLeft: theme.spacing(1),
       '& > .MuiTypography-root' : {
         fontSize: '16px',
-        fontFamily: '"Space Mono", monospace'
+        fontFamily: '"ABeeZee", sans-serif'
       },
     },
 }));
@@ -73,5 +74,14 @@ export const AccordionLinkButton = styled((props) => (
   paddingBottom: '12px',
   '&:hover': {
       transition: '0.15s ease-in',
+  },
+  '& .MuiListItemText-primary': {
+    paddingLeft: '12px',
+    fontSize: '16px',
+    fontFamily: '"ABeeZee", sans-serif'
+  },
+  '&.active .MuiSvgIcon-root': {
+    fill: theme.palette.mode === 'dark' ? '#44bbff' : '#0099ff',
+    opacity: 1
   }
 }));

@@ -9,6 +9,7 @@ import { getSidebarStatus } from '../../Store/sidebarSlice';
 import { toggleOrSetSidebar } from '../../Store/sidebarSlice';
 import { barChartGroupId, BarChartGroupAccordion } from '../Graphs/bar-charts/Bar-charts-group';
 import { pieChartGroupId, PieChartGroupAccordion } from '../Graphs/pie-charts/Pie-charts-group';
+import { areaChartGroupId, AreaChartGroupAccordion } from '../Graphs/area-charts/Area-charts-group';
 
 export default function SidebarDrawer() {
   const sideBarStatus = useSelector(getSidebarStatus);
@@ -35,6 +36,10 @@ export default function SidebarDrawer() {
         <Divider />
         <ListItem key={pieChartGroupId} sx={{padding: 0}}>
             <PieChartGroupAccordion expanded={expandedAcc === pieChartGroupId} onChange={handleChange(pieChartGroupId)} />
+        </ListItem>
+        <Divider />
+        <ListItem key={areaChartGroupId} sx={{padding: 0}}>
+            <AreaChartGroupAccordion expanded={expandedAcc === areaChartGroupId} onChange={handleChange(areaChartGroupId)} />
         </ListItem>
         <Divider />
       </List>

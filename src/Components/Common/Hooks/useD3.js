@@ -6,9 +6,9 @@ export const useD3 = ((renderFunc, dependencies, resizable = true) => {
     const [refWidth, setRefWidth] = useState(0);
 
     const resizerCallback = useCallback((entry) => {
-        if(resizable === true)
+        if(resizable === true && refWidth !== entry.contentRect.width)
             setRefWidth(entry.contentRect.width); 
-    }, [resizable]);
+    }, [resizable, refWidth]);
 
     const ref = useGetResizeableElementRef(resizerCallback);
 

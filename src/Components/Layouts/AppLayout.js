@@ -16,7 +16,8 @@ const Box = styled(MuiBox)(({ theme }) => ({
         height: '10px'
     },
     '&::-webkit-scrollbar-track': {
-        boxShadow: theme.palette.mode === 'dark' ? 'inset 0 0 7px #ffffff90' : 'inset 0 0 7px #00000080'
+        // boxShadow: theme.palette.mode === 'dark' ? 'inset 0 0 7px #ffffff90' : 'inset 0 0 7px #00000080',
+        opacity: 0
     },
     '&::-webkit-scrollbar-thumb': {
         backgroundColor: 'darkgrey',

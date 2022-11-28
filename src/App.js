@@ -5,6 +5,7 @@ import { useRoutes } from "react-router-dom";
 
 import { BarChartsRoutes } from "./Components/Graphs/bar-charts/Bar-charts-base";
 import { PieChartsRoutes } from "./Components/Graphs/pie-charts/Pie-charts-base";
+import { AreaChartsRoutes } from "./Components/Graphs/area-charts/Area-charts-base";
 
 const AppRoutes = () => {
   const routesElements = useRoutes([
@@ -19,6 +20,10 @@ const AppRoutes = () => {
         {
           path: 'pie-charts/*',
           element: <PieChartsRoutes />
+        },
+        {
+          path: 'area-charts/*',
+          element: <AreaChartsRoutes />
         }
       ]
     }

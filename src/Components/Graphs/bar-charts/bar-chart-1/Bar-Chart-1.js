@@ -124,7 +124,7 @@ const BarChart = () => {
                   });
               });
 
-          }, [data]),
+          }, []),
         [data.length]       // or simply data
       );
       

@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/abeezee": "^4.5.10",
     "@fontsource/dm-mono": "^4.5.10",
     "@fontsource/roboto": "^4.5.8",
     "@fontsource/space-mono": "^4.5.10",
