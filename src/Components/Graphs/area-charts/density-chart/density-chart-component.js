@@ -82,6 +82,7 @@ const DensityAreaChart = () => {
     });
 
     const themeMode = useSelector(state => state.theme.darkMode);
+  
     const renderSVG = useCallback((containerD3) => {
         const contHeight = 640;
         configRef.current.height = contHeight - configRef.current.margin.top - configRef.current.margin.bottom;
