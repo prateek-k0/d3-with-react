@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import BarChart from "./bar-chart-1/Bar-Chart-1";
 import StackedBarChartComponent from "./Stacked Bar Chart/StackedBarChartComponent";
 import ClusteredBarChart from "./clustered-bar-chart/ClusteredBarChartComponent";
+import HorizontalBarChart from "./horizontal-bar-chart/HorizontalBarChartComponet";
 
 export const BarChartsRoutes = () => {
     return useRoutes([
@@ -22,6 +23,10 @@ export const BarChartsRoutes = () => {
         {
             path: 'clustered-bar-chart',
             element: <ClusteredBarChart />
+        },
+        {
+            path: 'horizontal-bar-chart',
+            element: <HorizontalBarChart />
         },
     ])
 }

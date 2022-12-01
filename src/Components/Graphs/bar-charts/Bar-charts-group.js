@@ -38,6 +38,12 @@ export const BarChartGroupAccordion = ({ expanded, onChange }) => {
                                 <ListItemText primary="Clustered Bar Chart" />
                             </AccordionLinkButton>
                         </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/bar-charts/horizontal-bar-chart" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Horizontal Bar Chart" />
+                            </AccordionLinkButton>
+                        </ListItem>
                     </List>
                 </nav>
             </AccordionDetails>
