@@ -3,6 +3,7 @@ import React from "react";
 import Box from '@mui/material/Box';
 import AreaChartComponent1 from "./area-chart-1/area-chart-component";
 import DensityAreaChart from "./density-chart/density-chart-component";
+import FilledAreaChart from "./filled-area/filled-area-chart-component";
 
 export const AreaChartsRoutes = () => {
     return useRoutes([
@@ -17,6 +18,10 @@ export const AreaChartsRoutes = () => {
         {
             path: 'density-chart',
             element: <DensityAreaChart />
+        },
+        {
+            path: 'filled-area',
+            element: <FilledAreaChart />
         }
     ])
 }

@@ -31,6 +31,12 @@ export const AreaChartGroupAccordion = ({ expanded, onChange }) => {
                                 <ListItemText primary="Density Chart" />
                             </AccordionLinkButton>
                         </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/area-charts/filled-area">
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Filled Area Chart" />
+                            </AccordionLinkButton>
+                        </ListItem>
                     </List>
                 </nav>
             </AccordionDetails>
