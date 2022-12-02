@@ -93,7 +93,10 @@ const FilledAreaChart = () => {
         const grid = configRef.current.chart.append('g')
             .attr('class', 'grid')
             .attr('transform', `translate(${[configRef.current.margin.left - 15, configRef.current.margin.top - 50]})`)
-            .call(makeYLines().tickSize((-configRef.current.width + 90)));
+            .call(makeYLines().tickSize((-configRef.current.width + 90)))
+            .selectAll('.tick:not(:first-child)')
+            .select('line')
+            .attr('opacity', '0.2');
         grid.selectAll('text')
             .attr('font-family', 'Space Mono')
             .attr('font-weight', 400)
@@ -125,9 +128,10 @@ const FilledAreaChart = () => {
           };
           const lineData = [...data];
           lineData.unshift(dummyNode);
-          const areaGroup = configRef.current.chart.selectAll()
-            .data(lineData)
-            .enter()
+          const areaGroup = configRef.current.chart
+            // .selectAll()
+            // .data(lineData)
+            // .enter()
             .append('g');
       
           const areacat = d3.area()
