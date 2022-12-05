@@ -2,6 +2,7 @@ import { useRoutes } from "react-router-dom";
 import React from "react";
 import Box from '@mui/material/Box';
 import PieChartWithLabels from "./pie-chart-labels/PieChartWithLabelsComponent";
+import PieChartPercentageDistribution from "./pie-chart-percentage-distribution/PieChartComponent";
 
 export const PieChartsRoutes = () => {
     return useRoutes([
@@ -12,6 +13,10 @@ export const PieChartsRoutes = () => {
         {
             path: 'pie-chart-labels',
             element: <PieChartWithLabels />
+        },
+        {
+            path: 'pie-chart-perc-distribution',
+            element: <PieChartPercentageDistribution />
         },
     ])
 }

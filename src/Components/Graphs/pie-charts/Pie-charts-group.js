@@ -24,7 +24,13 @@ export const PieChartGroupAccordion = ({ expanded, onChange }) => {
                                 <ListItemText primary="Pie Chart With Labels" />
                             </AccordionLinkButton>
                         </ListItem>
-                    </List>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/pie-charts/pie-chart-perc-distribution" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Pie Chart Percentage Distribution" />
+                            </AccordionLinkButton>
+                        </ListItem>
+                </List>
             </AccordionDetails>
         </Accordion>
     )
