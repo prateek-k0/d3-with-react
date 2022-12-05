@@ -5,7 +5,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { NavLink as RouterLink } from 'react-router-dom';
-
 import TripOriginOutlinedIcon from '@mui/icons-material/TripOriginOutlined';
 
 export const barChartGroupId = 'bar-charts';
@@ -18,7 +17,6 @@ export const BarChartGroupAccordion = ({ expanded, onChange }) => {
                 <Typography>Bar Charts</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <nav aria-label="secondary mailbox folders">
                     <List sx={{ padding: '0'}}>
                         <ListItem disablePadding>
                             <AccordionLinkButton component={RouterLink} to="/bar-charts/bar-chart-1" >
@@ -51,7 +49,6 @@ export const BarChartGroupAccordion = ({ expanded, onChange }) => {
                             </AccordionLinkButton>
                         </ListItem>
                     </List>
-                </nav>
             </AccordionDetails>
         </Accordion>
     )

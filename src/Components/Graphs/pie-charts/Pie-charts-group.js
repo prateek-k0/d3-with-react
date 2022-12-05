@@ -1,6 +1,11 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { Accordion, AccordionSummary, AccordionDetails } from '../../Common/Accordion';
+import { Accordion, AccordionSummary, AccordionDetails, AccordionLinkButton } from '../../Common/Accordion';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import { NavLink as RouterLink } from 'react-router-dom';
+import TripOriginOutlinedIcon from '@mui/icons-material/TripOriginOutlined';
 
 export const pieChartGroupId = 'pie-charts';
 
@@ -12,12 +17,14 @@ export const PieChartGroupAccordion = ({ expanded, onChange }) => {
                 <Typography>Pie Charts</Typography>
             </AccordionSummary>
             <AccordionDetails>
-                <Typography>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                    malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-                    sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                    sit amet blandit leo lobortis eget.
-                </Typography>
+                <List sx={{ padding: '0'}}>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/pie-charts/pie-chart-labels" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Pie Chart With Labels" />
+                            </AccordionLinkButton>
+                        </ListItem>
+                    </List>
             </AccordionDetails>
         </Accordion>
     )
