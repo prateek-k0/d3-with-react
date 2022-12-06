@@ -42,6 +42,12 @@ export const PieChartGroupAccordion = ({ expanded, onChange }) => {
                                 <ListItemText primary="Sunburst Chart" />
                             </AccordionLinkButton>
                         </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/pie-charts/zoomable-sunburst" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Zoomable Sunburst Chart" />
+                            </AccordionLinkButton>
+                        </ListItem>
                 </List>
             </AccordionDetails>
         </Accordion>

@@ -5,6 +5,7 @@ import PieChartWithLabels from "./pie-chart-labels/PieChartWithLabelsComponent";
 import PieChartPercentageDistribution from "./pie-chart-percentage-distribution/PieChartComponent";
 import DonutChart from "./donut-chart/DonutChartComponent";
 import SunburstChart from "./sunburst-chart/SunburstChartComponent";
+import ZoomableSunburst from "./zoomable-sunburst/ZoomableSunburstComponent";
 
 export const PieChartsRoutes = () => {
     return useRoutes([
@@ -28,7 +29,11 @@ export const PieChartsRoutes = () => {
             path: 'sunburst-chart',
             element: <SunburstChart />
         },
-    ])
+        {
+            path: 'zoomable-sunburst',
+            element: <ZoomableSunburst />
+        },
+    ]);
 }
 
 const PieChartsBase = () => {

@@ -69,7 +69,7 @@ const SunburstChart = () => {
         height: 450,
         svg: undefined,
         rootNode: undefined,
-        radius: 130,
+        radius: 150,
         color: undefined,
     }); 
     const isDarkMode = useSelector(state => state.theme.darkMode);
