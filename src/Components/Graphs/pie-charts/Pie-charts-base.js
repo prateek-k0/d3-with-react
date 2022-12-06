@@ -3,6 +3,8 @@ import React from "react";
 import Box from '@mui/material/Box';
 import PieChartWithLabels from "./pie-chart-labels/PieChartWithLabelsComponent";
 import PieChartPercentageDistribution from "./pie-chart-percentage-distribution/PieChartComponent";
+import DonutChart from "./donut-chart/DonutChartComponent";
+import SunburstChart from "./sunburst-chart/SunburstChartComponent";
 
 export const PieChartsRoutes = () => {
     return useRoutes([
@@ -17,6 +19,14 @@ export const PieChartsRoutes = () => {
         {
             path: 'pie-chart-perc-distribution',
             element: <PieChartPercentageDistribution />
+        },
+        {
+            path: 'donut-chart',
+            element: <DonutChart />
+        },
+        {
+            path: 'sunburst-chart',
+            element: <SunburstChart />
         },
     ])
 }

@@ -30,6 +30,18 @@ export const PieChartGroupAccordion = ({ expanded, onChange }) => {
                                 <ListItemText primary="Pie Chart Percentage Distribution" />
                             </AccordionLinkButton>
                         </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/pie-charts/donut-chart" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Donut Chart" />
+                            </AccordionLinkButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/pie-charts/sunburst-chart" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Sunburst Chart" />
+                            </AccordionLinkButton>
+                        </ListItem>
                 </List>
             </AccordionDetails>
         </Accordion>
