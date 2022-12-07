@@ -52,7 +52,7 @@ const ZoomableSunburst = () => {
             .data(root.descendants().slice(1))
             .join("path")
             .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
-            .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
+            .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.65 : 0.35) : 0)
             .attr("pointer-events", d => arcVisible(d.current) ? "auto" : "none")
             .attr("d", d => arc(d.current));
 
@@ -102,7 +102,7 @@ const ZoomableSunburst = () => {
                   .filter(function(d) {
                     return +this.getAttribute("fill-opacity") || arcVisible(d.target);
                   })
-                    .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
+                    .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.65 : 0.35) : 0)
                     .attr("pointer-events", d => arcVisible(d.target) ? "auto" : "none") 
             
                     .attrTween("d", d => () => arc(d.current));

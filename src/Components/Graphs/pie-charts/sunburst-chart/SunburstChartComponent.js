@@ -79,7 +79,7 @@ const SunburstChart = () => {
             .attr('class', configRef.current.selector)
             .attr('height', configRef.current.height)
             .attr('width', configRef.current.width)
-            .attr('viewBox', `${-(configRef.current.width / 2)} ${-(configRef.current.height / 2)} ${configRef.current.width} ${configRef.current.height}`);;
+            .attr('viewBox', `${-(configRef.current.width / 2)} ${-(configRef.current.height / 2)} ${configRef.current.width} ${configRef.current.height}`);
     }, []);
 
     const transformData = useCallback(() => {
