@@ -24,6 +24,12 @@ export const BubbleChartGroupAccordion = ({ expanded, onChange }) => {
                             </AccordionLinkButton>
                         </ListItem>
                         <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/bubble-charts/circular-pack-zoom">
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Zoomable Circular Packing" />
+                            </AccordionLinkButton>
+                        </ListItem>
+                        <ListItem disablePadding>
                             <AccordionLinkButton component={RouterLink} to="/bubble-charts/bubble-force-simulation">
                                 <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
                                 <ListItemText primary="Bubble Force Simulation" />

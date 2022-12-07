@@ -18,17 +18,17 @@ const data = {
           {
             report: 'Highly Similar',
             value: 10,
-            color: '#cca5f2',
+            color: 'rgb(163, 222, 247)',
           },
           {
             report: 'Duplicate',
             value: 20,
-            color: '#9657D5',
+            color: 'rgb(100, 151, 249)',
           },
           {
             report: 'Subset',
             value: 20,
-            color: '#b981f0',
+            color: 'rgb(114, 189, 250)',
           },
         ],
       },
@@ -40,17 +40,17 @@ const data = {
           {
             report: 'Subset',
             value: 5,
-            color: '#b981f0',
+            color: 'rgb(114, 189, 250)',
           },
           {
             report: 'Highly Similar',
             value: 10,
-            color: '#cca5f2',
+            color: 'rgb(163, 222, 247)',
           },
           {
             report: 'Duplicate',
             value: 30,
-            color: '#9657D5',
+            color: 'rgb(100, 151, 249)',
           },
         ],
       },
@@ -62,17 +62,17 @@ const data = {
           {
             report: 'Subset',
             value: 10,
-            color: '#b981f0',
+            color: 'rgb(114, 189, 250)',
           },
           {
             report: 'Highly Similar',
             value: 20,
-            color: '#cca5f2',
+            color: 'rgb(163, 222, 247)',
           },
           {
             report: 'Duplicate',
             value: 30,
-            color: '#9657D5',
+            color: 'rgb(100, 151, 249)',
           },
         ],
       },
