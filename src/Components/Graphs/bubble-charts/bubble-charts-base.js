@@ -2,6 +2,7 @@ import { useRoutes } from "react-router-dom";
 import React from "react";
 import Box from '@mui/material/Box';
 import BasicCircularPacking from "./BasicCircularPacking/BasicCircularPackingComponent";
+import BubbleForceSimulation from "./BubbleForceSimulation/BubbleForceSimulationComponent";
 
 const BubbleChartsBase = () => {
     return (
@@ -20,6 +21,10 @@ export const BubbleChartsRoutes = () => {
         {
             path: 'circular-packing-basic',
             element: <BasicCircularPacking />
+        },
+        {
+            path: 'bubble-force-simulation',
+            element: <BubbleForceSimulation />
         }
     ]);
 }
