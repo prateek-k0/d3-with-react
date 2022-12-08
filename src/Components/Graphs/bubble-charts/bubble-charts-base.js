@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import BasicCircularPacking from "./BasicCircularPacking/BasicCircularPackingComponent";
 import BubbleForceSimulation from "./BubbleForceSimulation/BubbleForceSimulationComponent";
 import ZoomableCircularPacking from "./ZoomableCircularPacking/ZoomableCircularPackingComponent";
+import BubbleChartScatterPlot from "./BubbleChartScatter/BuccleChartScatterComponent";
 
 const BubbleChartsBase = () => {
     return (
@@ -30,6 +31,10 @@ export const BubbleChartsRoutes = () => {
         {
             path: 'circular-pack-zoom',
             element: <ZoomableCircularPacking />
+        },
+        {
+            path: 'bubble-scatter-plot',
+            element: <BubbleChartScatterPlot />
         }
     ]);
 }

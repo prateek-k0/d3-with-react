@@ -35,6 +35,12 @@ export const BubbleChartGroupAccordion = ({ expanded, onChange }) => {
                                 <ListItemText primary="Bubble Force Simulation" />
                             </AccordionLinkButton>
                         </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/bubble-charts/bubble-scatter-plot">
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Bubble Scatter Plot" />
+                            </AccordionLinkButton>
+                        </ListItem>
                 </List>
             </AccordionDetails>
         </Accordion>
