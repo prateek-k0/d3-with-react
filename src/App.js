@@ -8,6 +8,7 @@ import { PieChartsRoutes } from "./Components/Graphs/pie-charts/Pie-charts-base"
 import { AreaChartsRoutes } from "./Components/Graphs/area-charts/Area-charts-base";
 import { BubbleChartsRoutes } from "./Components/Graphs/bubble-charts/bubble-charts-base";
 import { ScatterChartsRoutes } from "./Components/Graphs/scatter-plots/scatter-plots-base";
+import { ArcChartsRoutes } from "./Components/Graphs/arc-charts/arc-charts-base";
 
 const AppRoutes = () => {
   const routesElements = useRoutes([
@@ -34,6 +35,10 @@ const AppRoutes = () => {
         {
           path: 'scatter-plots/*',
           element: <ScatterChartsRoutes />
+        },
+        {
+          path: 'arc-diagrams/*',
+          element: <ArcChartsRoutes />
         }
       ]
     }
