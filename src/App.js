@@ -7,6 +7,7 @@ import { BarChartsRoutes } from "./Components/Graphs/bar-charts/Bar-charts-base"
 import { PieChartsRoutes } from "./Components/Graphs/pie-charts/Pie-charts-base";
 import { AreaChartsRoutes } from "./Components/Graphs/area-charts/Area-charts-base";
 import { BubbleChartsRoutes } from "./Components/Graphs/bubble-charts/bubble-charts-base";
+import { ScatterChartsRoutes } from "./Components/Graphs/scatter-plots/scatter-plots-base";
 
 const AppRoutes = () => {
   const routesElements = useRoutes([
@@ -29,6 +30,10 @@ const AppRoutes = () => {
         {
           path: 'bubble-charts/*',
           element: <BubbleChartsRoutes />
+        },
+        {
+          path: 'scatter-plots/*',
+          element: <ScatterChartsRoutes />
         }
       ]
     }

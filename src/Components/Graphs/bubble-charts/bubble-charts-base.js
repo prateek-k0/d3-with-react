@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import BasicCircularPacking from "./BasicCircularPacking/BasicCircularPackingComponent";
 import BubbleForceSimulation from "./BubbleForceSimulation/BubbleForceSimulationComponent";
 import ZoomableCircularPacking from "./ZoomableCircularPacking/ZoomableCircularPackingComponent";
-import BubbleChartScatterPlot from "./BubbleChartScatter/BuccleChartScatterComponent";
+import BubbleChartScatterPlot from "./BubbleChartScatter/BubbleChartScatterComponent";
 
 const BubbleChartsBase = () => {
     return (

@@ -12,6 +12,7 @@ import { barChartGroupId, BarChartGroupAccordion } from '../Graphs/bar-charts/Ba
 import { pieChartGroupId, PieChartGroupAccordion } from '../Graphs/pie-charts/Pie-charts-group';
 import { areaChartGroupId, AreaChartGroupAccordion } from '../Graphs/area-charts/Area-charts-group';
 import { bubbleChartGroupId, BubbleChartGroupAccordion } from '../Graphs/bubble-charts/bubble-charts-group';
+import { scatterPlotsGroupId, ScatterPlotsGroupAccordion } from '../Graphs/scatter-plots/scatter-plots-group';
 
 export default function SidebarDrawer() {
   const sideBarStatus = useSelector(getSidebarStatus);
@@ -46,6 +47,10 @@ export default function SidebarDrawer() {
         <Divider />
         <ListItem key={bubbleChartGroupId} sx={{padding: 0}}>
             <BubbleChartGroupAccordion expanded={expandedAcc === bubbleChartGroupId} onChange={handleChange(bubbleChartGroupId)} />
+        </ListItem>
+        <Divider />
+        <ListItem key={scatterPlotsGroupId} sx={{padding: 0}}>
+            <ScatterPlotsGroupAccordion expanded={expandedAcc === scatterPlotsGroupId} onChange={handleChange(scatterPlotsGroupId)} />
         </ListItem>
         <Divider />
       </List>
