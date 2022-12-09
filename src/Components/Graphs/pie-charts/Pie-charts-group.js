@@ -14,7 +14,7 @@ export const PieChartGroupAccordion = ({ expanded, onChange }) => {
     return (
         <Accordion expanded={expanded} onChange={onChange}>
             <AccordionSummary id={pieChartGroupId}>
-                <Typography>Pie Charts</Typography>
+                <Typography>Pie & Chord Charts</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <List sx={{ padding: '0'}}>
@@ -46,6 +46,18 @@ export const PieChartGroupAccordion = ({ expanded, onChange }) => {
                             <AccordionLinkButton component={RouterLink} to="/pie-charts/zoomable-sunburst" >
                                 <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
                                 <ListItemText primary="Zoomable Sunburst Chart" />
+                            </AccordionLinkButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/pie-charts/chord-colored" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Chord Chart Colored" />
+                            </AccordionLinkButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/pie-charts/chord-labeled" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Chord Chart labeled" />
                             </AccordionLinkButton>
                         </ListItem>
                 </List>

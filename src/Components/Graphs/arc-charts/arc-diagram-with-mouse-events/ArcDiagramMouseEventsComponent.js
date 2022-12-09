@@ -96,20 +96,18 @@ const ArcDiagramMouseEvents = () => {
 
         // Add the highlighting functionality
         nodes.on('mouseover', function(event,d){
-
-            // Highlight the nodes: every node is green except of him
-        nodes.style('opacity', .2)
-        d3.select(this).style('opacity', 1)
-        
-            // Highlight the connections
-        links
-            .style('stroke', a => a.source === d.id || a.target === d.id ? color(d.grp) : '#b8b8b8')
-            .style('stroke-opacity', a => a.source === d.id || a.target === d.id ? 1 : .2)
-            .style('stroke-width', a => a.source === d.id || a.target === d.id ? 4 : 1)
-        labels
-            .style("font-size", b => b.name === d.name ? 18.9 : 2)
-            .attr("y", b => b.name === d.name ? 10 : 0)})
-            .on('mouseout', d => {
+                // Highlight the nodes: every node is green except of him
+                nodes.style('opacity', .2)
+                d3.select(this).style('opacity', 1)
+                // Highlight the connections
+                links
+                    .style('stroke', a => a.source === d.id || a.target === d.id ? color(d.grp) : '#b8b8b8')
+                    .style('stroke-opacity', a => a.source === d.id || a.target === d.id ? 1 : .2)
+                    .style('stroke-width', a => a.source === d.id || a.target === d.id ? 4 : 1)
+                labels
+                    .style("font-size", b => b.name === d.name ? 18.9 : 2)
+                    .attr("y", b => b.name === d.name ? 10 : 0)
+        }).on('mouseout', d => {
                 nodes.style('opacity', 1)
                 links
                     .style('stroke', 'grey')
@@ -117,7 +115,7 @@ const ArcDiagramMouseEvents = () => {
                     .style('stroke-width', '1')
                 labels
                     .style("font-size", 6 )
-            })
+        })
     }, [isDarkMode]);
 
     const graphContRef = useD3(renderFunc, [], false);

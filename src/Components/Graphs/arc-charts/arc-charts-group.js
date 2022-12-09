@@ -18,6 +18,18 @@ export const ArcChartsGroupAccordion = ({ expanded, onChange }) => {
             <AccordionDetails>
                 <List sx={{ padding: '0'}}>
                         <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/arc-diagrams/arc-diagram-basic">
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Arc Diagram Basic" />
+                            </AccordionLinkButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/arc-diagrams/arc-diagram-vertical">
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Arc Diagram Vertical" />
+                            </AccordionLinkButton>
+                        </ListItem>
+                        <ListItem disablePadding>
                             <AccordionLinkButton component={RouterLink} to="/arc-diagrams/arc-diagram-mouse">
                                 <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
                                 <ListItemText primary="Arc Diagram with mouse events" />

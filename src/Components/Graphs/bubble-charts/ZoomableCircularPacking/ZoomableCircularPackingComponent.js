@@ -5,8 +5,9 @@ import '@fontsource/space-mono/400.css';
 import '@fontsource/abeezee/400.css'
 import { Typography } from '@mui/material';
 import { data } from './data';
-
+import { useSelector } from 'react-redux';
 const ZoomableCircularPacking = () => {
+    const isDarkMode = useSelector(state => state.theme.darkMode);
     const configRef = useRef({
         width: 400,
         height: 350,
@@ -104,14 +105,14 @@ const ZoomableCircularPacking = () => {
             .attr('pointer-events', (d) => (!d.children ? 'none' : null))
             .on('mouseover', (event) => {
                 const target = event.currentTarget;
-                d3.select(target).attr('stroke', '#000');
+                d3.select(target).attr('stroke', isDarkMode ? '#fff' : '#000');
             })
             .on('mouseout', (event) => {
                 const target = event.currentTarget;
                 d3.select(target).attr('stroke', null);
             })
             .on('click', (event, d) => configRef.current.focus !== d && (zoom(event, d)));
-    }, [colorScale, zoom]);
+    }, [colorScale, zoom, isDarkMode]);
 
     const renderLabels = useCallback(() => {
         configRef.current.label = configRef.current.svg.append('g')

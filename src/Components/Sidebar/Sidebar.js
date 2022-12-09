@@ -7,6 +7,7 @@ import ListItem from '@mui/material/ListItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { getSidebarStatus } from '../../Store/sidebarSlice';
 import { toggleOrSetSidebar } from '../../Store/sidebarSlice';
+import styled from '@emotion/styled';
 // component imports
 import { barChartGroupId, BarChartGroupAccordion } from '../Graphs/bar-charts/Bar-charts-group';
 import { pieChartGroupId, PieChartGroupAccordion } from '../Graphs/pie-charts/Pie-charts-group';
@@ -14,6 +15,24 @@ import { areaChartGroupId, AreaChartGroupAccordion } from '../Graphs/area-charts
 import { bubbleChartGroupId, BubbleChartGroupAccordion } from '../Graphs/bubble-charts/bubble-charts-group';
 import { scatterPlotsGroupId, ScatterPlotsGroupAccordion } from '../Graphs/scatter-plots/scatter-plots-group';
 import { arcChartsGroupId, ArcChartsGroupAccordion } from '../Graphs/arc-charts/arc-charts-group';
+
+const DrawerComponent = styled((props) => (
+  <Drawer {...props} />
+))(({ theme }) => ({
+  '.MuiDrawer-paperAnchorLeft': {
+    '&::-webkit-scrollbar': {
+      width: '10px',
+      height: '10px'
+    },
+    '&::-webkit-scrollbar-track': {
+        // boxShadow: theme.palette.mode === 'dark' ? 'inset 0 0 7px #ffffff90' : 'inset 0 0 7px #00000080',
+        opacity: 0
+    },
+    '&::-webkit-scrollbar-thumb': {
+        backgroundColor: 'darkgrey',
+    },
+  }
+}));
 
 export default function SidebarDrawer() {
   const sideBarStatus = useSelector(getSidebarStatus);
@@ -63,8 +82,8 @@ export default function SidebarDrawer() {
   );
 
   return (
-        <Drawer anchor='left' open={sideBarStatus} onClose={() => dispatch(toggleOrSetSidebar(false))}>
+        <DrawerComponent anchor='left' open={sideBarStatus} onClose={() => dispatch(toggleOrSetSidebar(false))}>
             {list()}
-        </Drawer>
+        </DrawerComponent>
   );
 }
