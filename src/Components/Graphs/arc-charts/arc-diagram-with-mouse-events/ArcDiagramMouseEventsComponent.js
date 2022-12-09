@@ -114,6 +114,7 @@ const ArcDiagramMouseEvents = () => {
                     .style('stroke-opacity', .8)
                     .style('stroke-width', '1')
                 labels
+                    .attr("y", 0)
                     .style("font-size", 6 )
         })
     }, [isDarkMode]);

@@ -24,8 +24,6 @@ const ChordChartLabeled = () => {
             .append("g")
                 .attr("transform", "translate(260,260)");
 
-        const colors = ["turquoise", "darkcyan", "skyblue", "steelblue"];
-
         const res = d3.chord()
             .padAngle(0.05)
             .sortSubgroups(d3.descending)
