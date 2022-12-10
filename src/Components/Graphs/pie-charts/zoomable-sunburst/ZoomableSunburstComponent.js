@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -19,6 +19,8 @@ const ZoomableSunburst = () => {
         return d3.partition()
             .size([2 * Math.PI, root.height + 1])(root);
     }, []);
+
+    const dataDep = useMemo(() => ({ data }), []);
 
     const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1))
 
@@ -130,7 +132,7 @@ const ZoomableSunburst = () => {
 
     }, [partition, arc, color, format, radius, isDarkMode]);
 
-    const graphContRef = useD3(renderFunc, [data], false);
+    const graphContRef = useD3(renderFunc, dataDep, false);
 
     return (
         <div className='pie-chart__wrapper'>

@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -96,6 +96,8 @@ const HorizontalBarChart = () => {
         height: 0,
         width: 0,
     });
+
+    const dataDep = useMemo(() => ({ data }), []);
 
     const getPreparedData = useCallback(() => {
         const groupData = d3.group(data, (d) => d.vertical);
@@ -234,7 +236,7 @@ const HorizontalBarChart = () => {
         renderStacks();
     }, [renderSVG, renderXAxis, renderYAxis, renderVerticalLines, renderStacks]);
 
-    const graphContRef = useD3(renderFunc, [data.length]);
+    const graphContRef = useD3(renderFunc, dataDep);
 
     return (
         <div className='horizontal-bar-chart__wrapper'>

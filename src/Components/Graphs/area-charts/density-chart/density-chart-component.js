@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -203,7 +203,9 @@ const DensityAreaChart = () => {
         createPaths(configRef.current.chart, xScale(), yScale(), configRef.current.margin)
     }, [renderGrid, renderSVG, xScale, yScale, createPaths]);
 
-    const graphContRef = useD3(renderGraph, [data.length]);
+    const dataDep = useMemo(() => ({ data }), []);
+  
+    const graphContRef = useD3(renderGraph, dataDep);
 
     return (
         <div className='density-chart__wrapper'>

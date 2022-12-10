@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -17,7 +17,9 @@ const BubbleForceSimulation = () => {
             x: width * 0.2,
             y: height,
           }));
-    }, [])
+    }, []);
+
+    const dataDep = useMemo(() => ({ data }), []);
     
     const renderFunc = useCallback((containerD3) => {
         const selector = 'usage-analysi-container';
@@ -107,7 +109,7 @@ const BubbleForceSimulation = () => {
         splitBubbles('all', nodes);
     }, [transformData]);
 
-    const graphContRef = useD3(renderFunc, [data], false);
+    const graphContRef = useD3(renderFunc, dataDep, false);
 
     return (
         <div className='bubble-chart__wrapper'>

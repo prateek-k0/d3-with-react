@@ -73,7 +73,7 @@ const MultipleCharts = () => {
             .style("fill", function(d){ return color(d[0]) });
     }, []);
 
-    const graphContRef = useD3(renderFunc, [], false);
+    const graphContRef = useD3(renderFunc, null, false);
 
     return (
         <div className='line-chart__wrapper'>

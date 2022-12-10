@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 
@@ -36,6 +36,7 @@ const data = [
 ];
 
 const BarChart = () => {
+  const dataDep = useMemo(() => ({ data }), []);
     const ref = useD3(
         useCallback((cont) => {
             const svg = cont.append('svg')
@@ -125,7 +126,7 @@ const BarChart = () => {
               });
 
           }, []),
-        [data.length]       // or simply data
+          dataDep
       );
       
       return (

@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -62,6 +62,8 @@ const StackedBarChartComponent = () => {
         colors: [['black', 'darkgrey', 'grey'], ['#ffffffee', '#ffffffaa', 'grey']],
         selector: 'bar-graph-stacked-section',
     });
+
+    const dataDep = useMemo(() => ({ data }), []);
 
     const stacks = useCallback(() => d3.stack().keys(configRef.current.keys)(data), []);
 
@@ -141,7 +143,7 @@ const StackedBarChartComponent = () => {
         renderStacks();
     }, [renderSVG, renderXAxis, renderYAxis, renderStacks]);
 
-    const graphContRef = useD3(renderGraph, [data.length]);
+    const graphContRef = useD3(renderGraph, dataDep);
 
     return (
         <div className='stacked-bar-chart__wrapper'>

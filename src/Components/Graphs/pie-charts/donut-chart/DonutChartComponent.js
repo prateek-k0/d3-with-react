@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -27,6 +27,8 @@ const DonutChart = () => {
         totalCount: 0,
         color: ['#6D6ACC', '#7188DC', '#67CABD', '#DC67CE'],
     });
+
+    const dataDep = useMemo(() => ({ data }), []);
 
     const renderSVG = useCallback((containerD3) => {
         configRef.current.svg = containerD3.append('svg')
@@ -108,7 +110,7 @@ const DonutChart = () => {
             .attr('fill', (d, i) => configRef.current.color[i]);
     }, [renderSVG, isDarkMode]);
 
-    const graphContRef = useD3(renderFunc, [data.length], false);
+    const graphContRef = useD3(renderFunc, dataDep, false);
 
     return (
         <div className='pie-chart__wrapper'>

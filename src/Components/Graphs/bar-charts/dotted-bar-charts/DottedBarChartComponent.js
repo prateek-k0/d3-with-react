@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -48,6 +48,8 @@ const DottedBarChart = () => {
         svg: undefined,
         chart: undefined
     });
+
+    const dataDep = useMemo(() => ({ data }), []);
 
     const renderSVG = useCallback((containerD3) => {
         const contHeight = 700;
@@ -157,7 +159,7 @@ const DottedBarChart = () => {
         renderDotMatrix();
     }, [renderDotMatrix, renderSVG, renderYAxis]);
 
-    const graphContRef = useD3(renderFunc, [data.length], false);
+    const graphContRef = useD3(renderFunc, dataDep, false);
 
     return (
         <div className='dotted-bar-chart__wrapper'>

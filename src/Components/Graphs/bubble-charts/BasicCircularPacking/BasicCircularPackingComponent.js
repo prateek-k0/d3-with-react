@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -92,6 +92,8 @@ const BasicCircularPacking = () => {
         rootNode: undefined
     });
 
+    const dataDep = useMemo(() => ({ data }), []);
+
     const renderSVG = useCallback((containerD3) => {
         configRef.current.svg = containerD3.append('svg')
             .attr('class', configRef.current.selector)
@@ -159,7 +161,7 @@ const BasicCircularPacking = () => {
         renderValues();
     }, [renderSVG, renderCircles, renderValues]);
 
-    const graphContRef = useD3(renderFunc, [data], false);
+    const graphContRef = useD3(renderFunc, dataDep, false);
 
     return (
         <div className='bubble-chart__wrapper'>

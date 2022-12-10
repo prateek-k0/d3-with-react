@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -37,6 +37,8 @@ const PieChartPercentageDistribution = () => {
         margin: 0,
         donutChart: undefined
     });
+
+    const dataDep = useMemo(() => ({ data }), []);
 
     const renderFunc = useCallback((container) => {
         configRef.current.svg = container.append('svg')
@@ -117,7 +119,7 @@ const PieChartPercentageDistribution = () => {
             .attr('fill', isDarkMode ? '#121212' : '#fff');
     }, [isDarkMode]);
 
-    const graphContRef = useD3(renderFunc, [data.length], false);
+    const graphContRef = useD3(renderFunc, dataDep, false);
 
     return (
         <div className='pie-chart__wrapper'>

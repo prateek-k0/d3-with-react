@@ -56,7 +56,7 @@ const LineChartBasic = () => {
 
     }, []);
 
-    const graphContRef = useD3(renderFunc, [], false);
+    const graphContRef = useD3(renderFunc, null, false);
 
     return (
         <div className='line-chart__wrapper'>

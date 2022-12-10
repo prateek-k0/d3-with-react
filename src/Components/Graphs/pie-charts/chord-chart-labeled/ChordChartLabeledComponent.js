@@ -93,7 +93,7 @@ const ChordChartLabeled = () => {
 
     }, [matrix, isDarkMode]);
 
-    const graphContRef = useD3(renderFunc, [], false);
+    const graphContRef = useD3(renderFunc, null, false);
 
     return (
         <div className='chord-chart__wrapper'>

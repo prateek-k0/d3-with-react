@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -40,6 +40,8 @@ const ClusteredBarChart = () => {
         width: 0,
         height: 0
     });
+
+    const dataDep = useMemo(() => ({ data }), []);
 
     const color_codes = useCallback(() => {
         return d3.scaleOrdinal()
@@ -125,7 +127,7 @@ const ClusteredBarChart = () => {
         renderBars();
     }, [renderSVG, renderXAxis, renderYAxis, renderBars]);
 
-    const graphContRef = useD3(renderGraph, [data.length]);
+    const graphContRef = useD3(renderGraph, dataDep);
 
     return (
         <div className='clustered-bar-chart__wrapper'>

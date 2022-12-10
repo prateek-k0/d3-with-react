@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -194,7 +194,8 @@ const FilledAreaChart = () => {
         createPaths();
     }, [renderGrid, renderSVG, renderXAxis, createPaths]);
 
-    const graphContRef = useD3(renderFunc, [data.length]);
+    const dataDep = useMemo(() => ({ data }), [])
+    const graphContRef = useD3(renderFunc, dataDep);
 
     return (
         <div className='filled-area-chart__wrapper'>

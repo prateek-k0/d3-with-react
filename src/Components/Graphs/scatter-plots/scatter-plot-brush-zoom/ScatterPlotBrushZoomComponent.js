@@ -107,7 +107,7 @@ const ScatterPlotBrushZoom = () => {
         }
     }, []);
 
-    const graphContRef = useD3(renderFunc, [], false);
+    const graphContRef = useD3(renderFunc, null, false);
 
     return (
         <div className='scatter-plot__wrapper'>

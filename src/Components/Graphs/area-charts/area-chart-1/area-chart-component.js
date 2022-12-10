@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -75,7 +75,10 @@ const AreaChartComponent = () => {
         drawYAxis();
         drawArea();
     };
-    const graphContRef = useD3(renderGraph, [data.length]);
+
+    const dataDep = useMemo(() => ({ data }), []);
+
+    const graphContRef = useD3(renderGraph, dataDep);
 
     const renderSVG = (containerD3) => {
         const contHeight = 640;

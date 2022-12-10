@@ -20,7 +20,7 @@ export const useD3 = ((renderFunc, dependencies, resizable = true) => {
             // cleanup function 
             containerElement.innerHTML = '';
         };
-    }, [ref, renderFunc, ...dependencies, refWidth]);
+    }, [ref, renderFunc, dependencies, refWidth]);
 
     return ref;
 });

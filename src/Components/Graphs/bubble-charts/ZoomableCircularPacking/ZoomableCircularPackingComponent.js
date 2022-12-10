@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -29,6 +29,8 @@ const ZoomableCircularPacking = () => {
         },
         label: undefined
     }); 
+
+    const dataDep = useMemo(() => ({ data }), []);
 
     const prepareData = useCallback(() => {
         const pack = d3.pack()
@@ -137,7 +139,7 @@ const ZoomableCircularPacking = () => {
         zoomTo([configRef.current.root.x, configRef.current.root.y, configRef.current.root.r * 2.5]);
     }, [renderLabels, renderSVG, renderNodes, prepareData, zoomTo]);
 
-    const graphContRef = useD3(renderFunc, [data], true);
+    const graphContRef = useD3(renderFunc, dataDep, true);
 
     return (
         <div className='bubble-chart__wrapper'>

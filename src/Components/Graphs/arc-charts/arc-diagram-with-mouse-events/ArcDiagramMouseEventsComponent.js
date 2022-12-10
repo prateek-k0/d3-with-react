@@ -119,7 +119,7 @@ const ArcDiagramMouseEvents = () => {
         })
     }, [isDarkMode]);
 
-    const graphContRef = useD3(renderFunc, [], false);
+    const graphContRef = useD3(renderFunc, null, false);
 
     return (
         <div className='arc-chart__wrapper'>

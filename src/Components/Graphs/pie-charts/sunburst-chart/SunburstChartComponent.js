@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useMemo } from 'react';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
@@ -72,6 +72,9 @@ const SunburstChart = () => {
         radius: 150,
         color: undefined,
     }); 
+
+    const dataDep = useMemo(() => ({ data }), []);
+
     const isDarkMode = useSelector(state => state.theme.darkMode);
 
     const renderSVG = useCallback((containerD3) => {
@@ -205,7 +208,7 @@ const SunburstChart = () => {
         renderLegendMarkers();
     }, [renderArc, renderSVG, renderDataTitle, transformData, renderLegendLines, renderLegendMarkers]);
 
-    const graphContRef = useD3(renderFunc, [data], false);
+    const graphContRef = useD3(renderFunc, dataDep, false);
 
     return (
         <div className='pie-chart__wrapper'>
