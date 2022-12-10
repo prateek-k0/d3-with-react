@@ -5,20 +5,16 @@ import ArcDiagramMouseEvents from "./arc-diagram-with-mouse-events/ArcDiagramMou
 import ArcDiagramBasic from "./arc-diagram-basic/ArcDiagramBasicComponent";
 import ArcDiagramVertical from "./arc-diagram-vertical/ArcDiagramVerticalComponent";
 
-const ArcChartsBase = () => {
+const ArcChartsDefault = () => {
     return (
         <Box>
-            Arc Charts Base
+            No such arc chart found
         </Box>
     )
 }
 
 export const ArcChartsRoutes = () => {
     return useRoutes([
-        {
-            index: true,
-            element: <ArcChartsBase />
-        },
         {
             path: 'arc-diagram-mouse',
             element: <ArcDiagramMouseEvents />
@@ -30,6 +26,10 @@ export const ArcChartsRoutes = () => {
         {
             path: 'arc-diagram-vertical',
             element: <ArcDiagramVertical />
-        }
+        },
+        {
+            path: '*',
+            element: <ArcChartsDefault />
+        },
     ]);
 }

@@ -12,10 +12,6 @@ import ChordChartLabeled from "./chord-chart-labeled/ChordChartLabeledComponent"
 export const PieChartsRoutes = () => {
     return useRoutes([
         {
-            index: true,
-            element: <PieChartsBase />
-        },
-        {
             path: 'pie-chart-labels',
             element: <PieChartWithLabels />
         },
@@ -43,13 +39,17 @@ export const PieChartsRoutes = () => {
             path: 'chord-labeled',
             element: <ChordChartLabeled />
         },
+        {
+            path: '*',
+            element: <PieChartsDefault />
+        },
     ]);
 }
 
-const PieChartsBase = () => {
+const PieChartsDefault = () => {
     return (
         <Box>
-            Pie Charts Base
+            No such pie chart found
         </Box>
     )
 }

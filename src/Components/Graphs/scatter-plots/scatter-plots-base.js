@@ -6,20 +6,16 @@ import ScatterPlotBrushZoom from "./scatter-plot-brush-zoom/ScatterPlotBrushZoom
 import ScatterPlotGrouped from "./scatter-plot-grouped/ScatterPlotGrouped";
 import ScatterPlotBasic from "./scatter-plot-basic/ScatterPlotBasicComponent";
 
-const ScatterPlotsBase = () => {
+const ScatterPlotsDefault = () => {
     return (
         <Box>
-            Scatter Plots Base
+            no such scatter plot found
         </Box>
     )
 }
 
 export const ScatterChartsRoutes = () => {
     return useRoutes([
-        {
-            index: true,
-            element: <ScatterPlotsBase />
-        },
         {
             path: 'scatter-plot-brush',
             element: <ScatterPlotBrush />
@@ -35,6 +31,10 @@ export const ScatterChartsRoutes = () => {
         {
             path: 'scatter-plot-basic',
             element: <ScatterPlotBasic />
-        }
+        },
+        {
+            path: '*',
+            element: <ScatterPlotsDefault />
+        },
     ]);
 }

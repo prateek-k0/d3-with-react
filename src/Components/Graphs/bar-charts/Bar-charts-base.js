@@ -10,10 +10,6 @@ import DottedBarChart from "./dotted-bar-charts/DottedBarChartComponent";
 export const BarChartsRoutes = () => {
     return useRoutes([
         {
-            index: true,
-            element: <BarChartsBase />
-        },
-        {
             path: 'bar-chart-1',
             element: <BarChart />
         },
@@ -32,14 +28,18 @@ export const BarChartsRoutes = () => {
         {
             path: 'dotted-bar-chart',
             element: <DottedBarChart />
-        }
+        },
+        {
+            path: '*',
+            element: <BarChartsDefault />
+        },
     ])
 }
 
-const BarChartsBase = () => {
+const BarChartsDefault = () => {
     return (
         <Box>
-            Bar Charts Base
+            No such bar chart found
         </Box>
     )
 }

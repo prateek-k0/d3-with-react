@@ -8,10 +8,10 @@ import RidgelineChart from "./ridgeline-chart/RidgelineChartComponent";
 
 export const AreaChartsRoutes = () => {
     return useRoutes([
-        {
-            index: true,
-            element: <AreaChartsBase />
-        },
+        // {
+        //     index: true,
+        //     element: <AreaChartsDefault />
+        // },
         {
             path: 'area-chart-1',
             element: <AreaChartComponent1 />
@@ -27,14 +27,18 @@ export const AreaChartsRoutes = () => {
         {
             path: 'ridgeline',
             element: <RidgelineChart />
-        }
+        },
+        {
+            path: '*',
+            element: <AreaChartsDefault />
+        },
     ])
 }
 
-const AreaChartsBase = () => {
+const AreaChartsDefault = () => {
     return (
         <Box>
-            Area Charts Base
+            No such area chart found
         </Box>
     )
 }

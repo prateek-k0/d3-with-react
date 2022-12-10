@@ -6,20 +6,16 @@ import BubbleForceSimulation from "./BubbleForceSimulation/BubbleForceSimulation
 import ZoomableCircularPacking from "./ZoomableCircularPacking/ZoomableCircularPackingComponent";
 import BubbleChartScatterPlot from "./BubbleChartScatter/BubbleChartScatterComponent";
 
-const BubbleChartsBase = () => {
+const BubbleChartsDefault = () => {
     return (
         <Box>
-            Bubble Charts Base
+            No such bubble chart found
         </Box>
     )
 }
 
 export const BubbleChartsRoutes = () => {
     return useRoutes([
-        {
-            index: true,
-            element: <BubbleChartsBase />
-        },
         {
             path: 'circular-packing-basic',
             element: <BasicCircularPacking />
@@ -35,6 +31,10 @@ export const BubbleChartsRoutes = () => {
         {
             path: 'bubble-scatter-plot',
             element: <BubbleChartScatterPlot />
-        }
+        },
+        {
+            path: '*',
+            element: <BubbleChartsDefault />
+        },
     ]);
 }
