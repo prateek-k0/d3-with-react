@@ -4,6 +4,7 @@ import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
 import '@fontsource/abeezee/400.css'
 import { Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 
 const data = [
     {
@@ -12,20 +13,20 @@ const data = [
     },
     {
       Xvalue: 'Feb\'22',
-      cat: '500',
+      cat: '800',
     },
     {
       Xvalue: 'Mar\'22',
-      cat: '2800',
+      cat: '1600',
     },
     {
       Xvalue: 'Apr\'22',
-      cat: '1030',
+      cat: '1200',
     },
 ];
 
 const FilledAreaChart = () => {
-
+    const isDarkMode = useSelector(state => state.theme.darkMode);
     const configRef = useRef({
         selector: 'curved-area-fill',
         svg: undefined,
@@ -62,10 +63,10 @@ const FilledAreaChart = () => {
     }, []);
 
     const yScale = useCallback(() => {
-        const yMaxVal = d3.max(data, (d) => +d.cat);
+        // const yMaxVal = d3.max(data, (d) => +d.cat);
         return d3.scaleLinear()
         .rangeRound([configRef.current.height, 0])
-        .domain([0, yMaxVal + 500])
+        .domain([0, 3000])
         .nice();
     }, []);
 
@@ -115,19 +116,19 @@ const FilledAreaChart = () => {
     
         areaGradient.append('stop')
             .attr('offset', '0%')
-            .attr('stop-color', '#d8a4ed')
+            .attr('stop-color', '#eb44ff')
             .attr('stop-opacity', 1);
         areaGradient.append('stop')
             .attr('offset', '100%')
-            .attr('stop-color', '#fff')
+            .attr('stop-color', isDarkMode ? '#000' : '#fff')
             .attr('stop-opacity', 0.3);
 
-          const dummyNode = {
-            cat: 0,
-            type: 'origin'
-          };
+          // const dummyNode = {
+          //   cat: 0,
+          //   type: 'origin'
+          // };
           const lineData = [...data];
-          lineData.unshift(dummyNode);
+          // lineData.unshift(dummyNode);
           const areaGroup = configRef.current.chart
             // .selectAll()
             // .data(lineData)
@@ -165,8 +166,26 @@ const FilledAreaChart = () => {
             .attr('stroke', '#9230a6')
             .attr('stroke-width', 3)
             .attr('fill', 'none');
+
+          areaGroup.append('line')
+            .attr('x1', xScale()(data[0].Xvalue) + xScale().bandwidth() / 2)
+            .attr('x2', xScale()(data[0].Xvalue) + xScale().bandwidth() / 2)
+            .attr('y1', configRef.current.height)
+            .attr('y2', yScale()(data[0].cat))
+            .attr('stroke', '#eb44ff')
+            .attr('stroke-width', '1')
+            .attr('stroke-dasharray', '5 3')
+
+          areaGroup.append('line')
+            .attr('x1', xScale()(data[data.length - 1].Xvalue) + xScale().bandwidth() / 2)
+            .attr('x2', xScale()(data[data.length - 1].Xvalue) + xScale().bandwidth() / 2)
+            .attr('y1', configRef.current.height)
+            .attr('y2', yScale()(data[data.length - 1].cat))
+            .attr('stroke', '#eb44ff')
+            .attr('stroke-width', '1')
+            .attr('stroke-dasharray', '5 3')
       
-    }, [xScale, yScale])
+    }, [xScale, yScale, isDarkMode])
 
     const renderFunc = useCallback((cont) => {
         renderSVG(cont);

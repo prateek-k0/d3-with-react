@@ -14,7 +14,7 @@ const MultipleCharts = () => {
 
         const data = await d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/5_OneCatSevNumOrdered.csv");
         const sumstat = d3.group(data, d => d.name)
-        let allKeys = new Set(data.map(d=>d.name))
+        // let allKeys = new Set(data.map(d=>d.name))
 
         const svg = container
             .selectAll("uniqueChart")
