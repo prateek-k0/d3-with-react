@@ -5,21 +5,19 @@ import LineChartBasic from "./line-chart-basic/LineChartsBasic";
 import MultiLineChart from "./multi-line-chart/MultiLineChartComponent";
 import LineChartGradient from "./line-chart-gradient/LineChartGradientComponent";
 import LineChartBrushed from "./line-chart-brushed/LineChartBrushedComponent";
+import LineChartMultipleInputs from "./line-chart-multiple-input/LineChartMultipleInput";
+import MultipleCharts from "./multiple-charts/MultipleChartsComponent";
 
-const LineChartsBase = () => {
+const LineChartDefault = () => {
     return (
         <Box>
-            Line Charts Base
+            No such line chart found
         </Box>
     )
 }
 
 export const LineChartsRoutes = () => {
     return useRoutes([
-        {
-            index: true,
-            element: <LineChartsBase />
-        },
         {
             path: 'line-chart-basic',
             element: <LineChartBasic />
@@ -35,6 +33,18 @@ export const LineChartsRoutes = () => {
         {
             path: 'line-chart-brushed',
             element: <LineChartBrushed />
+        },
+        {
+            path: 'line-chart-multiple-inputs',
+            element: <LineChartMultipleInputs />
+        },
+        {
+            path: 'multiple-charts',
+            element: <MultipleCharts />
+        },
+        {
+            path: '*',
+            element: <LineChartDefault />
         },
     ]);
 }

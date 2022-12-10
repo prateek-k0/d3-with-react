@@ -42,6 +42,18 @@ export const LineChartGroupAccordion = ({ expanded, onChange }) => {
                                 <ListItemText primary="Line Chart Brushed" />
                             </AccordionLinkButton>
                         </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/line-charts/line-chart-multiple-inputs" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Line chart with multiple inputs" />
+                            </AccordionLinkButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/line-charts/multiple-charts" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="MultipleLineCharts" />
+                            </AccordionLinkButton>
+                        </ListItem>
                 </List>
             </AccordionDetails>
         </Accordion>
