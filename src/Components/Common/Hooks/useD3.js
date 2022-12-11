@@ -2,25 +2,30 @@ import { useLayoutEffect, useState, useCallback } from 'react';
 import { useGetResizeableElementRef } from "./useGetResizeableElementRef";
 import * as d3 from 'd3';
 
-export const useD3 = ((renderFunc, dependencies, resizable = true) => {
+export const useD3 = ((renderFunc, dependencies, resizeable = true, onCleanup = undefined) => {
     const [refWidth, setRefWidth] = useState(0);
 
     const resizerCallback = useCallback((entry) => {
-        if(resizable === true && refWidth !== entry.contentRect.width)
+        if(resizeable === true && refWidth !== entry.contentRect.width)
             setRefWidth(entry.contentRect.width); 
-    }, [resizable, refWidth]);
+    }, [resizeable, refWidth]);
 
     const ref = useGetResizeableElementRef(resizerCallback);
+
+    const resizeableDep = resizeable ? refWidth : null;
 
     useLayoutEffect(() => {
         const containerElement = ref.current;
         renderFunc(d3.select(containerElement));
        
+        // return cleanup function
         return () => {
-            // cleanup function 
+            // on cleanup callback
+            onCleanup && onCleanup();
+            // remove inncer content when this function is run
             containerElement.innerHTML = '';
         };
-    }, [ref, renderFunc, dependencies, refWidth]);
+    }, [ref, renderFunc, dependencies, onCleanup, resizeableDep]);
 
     return ref;
 });
