@@ -10,6 +10,7 @@ import { BubbleChartsRoutes } from "./Components/Graphs/bubble-charts/bubble-cha
 import { ScatterChartsRoutes } from "./Components/Graphs/scatter-plots/scatter-plots-base";
 import { ArcChartsRoutes } from "./Components/Graphs/arc-charts/arc-charts-base";
 import { LineChartsRoutes } from "./Components/Graphs/line-charts/line-charts-base";
+import { HistogramsRoutes } from "./Components/Graphs/histograms/histograms-base";
 
 const AppRoutes = () => {
   const routesElements = useRoutes([
@@ -44,6 +45,10 @@ const AppRoutes = () => {
         {
           path: 'line-charts/*',
           element: <LineChartsRoutes />
+        },
+        {
+          path: 'histograms/*',
+          element: <HistogramsRoutes />
         },
       ]
     }

@@ -16,6 +16,7 @@ import { bubbleChartGroupId, BubbleChartGroupAccordion } from '../Graphs/bubble-
 import { scatterPlotsGroupId, ScatterPlotsGroupAccordion } from '../Graphs/scatter-plots/scatter-plots-group';
 import { arcChartsGroupId, ArcChartsGroupAccordion } from '../Graphs/arc-charts/arc-charts-group';
 import { LineChartGroupAccordion, lineChartGroupId } from '../Graphs/line-charts/line-charts-group';
+import { histogramsGroupId, HistorgarmsGroupAccordion } from '../Graphs/histograms/histograms-group';
 
 const DrawerComponent = styled((props) => (
   <Drawer {...props} />
@@ -80,6 +81,10 @@ export default function SidebarDrawer() {
         <Divider />
         <ListItem key={lineChartGroupId} sx={{padding: 0}}>
             <LineChartGroupAccordion expanded={expandedAcc === lineChartGroupId} onChange={handleChange(lineChartGroupId)} />
+        </ListItem>
+        <Divider />
+        <ListItem key={histogramsGroupId} sx={{padding: 0}}>
+            <HistorgarmsGroupAccordion expanded={expandedAcc === histogramsGroupId} onChange={handleChange(histogramsGroupId)} />
         </ListItem>
         <Divider />
       </List>
