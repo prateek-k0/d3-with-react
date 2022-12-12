@@ -20,9 +20,9 @@ export const useD3 = ((renderFunc, dependencies, resizeable = true, onCleanup = 
        
         // return cleanup function
         return () => {
-            // on cleanup callback
+            // onCleanup callback
             onCleanup && onCleanup();
-            // remove inncer content when this function is run
+            // remove inner content when this function is run
             containerElement.innerHTML = '';
         };
     }, [ref, renderFunc, dependencies, onCleanup, resizeableDep]);
