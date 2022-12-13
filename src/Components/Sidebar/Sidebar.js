@@ -17,6 +17,7 @@ import { scatterPlotsGroupId, ScatterPlotsGroupAccordion } from '../Graphs/scatt
 import { arcChartsGroupId, ArcChartsGroupAccordion } from '../Graphs/arc-charts/arc-charts-group';
 import { LineChartGroupAccordion, lineChartGroupId } from '../Graphs/line-charts/line-charts-group';
 import { histogramsGroupId, HistorgarmsGroupAccordion } from '../Graphs/histograms/histograms-group';
+import { heatmapsGroupId, HeatmapsGroupAccordion } from '../Graphs/heatmaps/heatmaps-groups';
 
 const DrawerComponent = styled((props) => (
   <Drawer {...props} />
@@ -85,6 +86,10 @@ export default function SidebarDrawer() {
         <Divider />
         <ListItem key={histogramsGroupId} sx={{padding: 0}}>
             <HistorgarmsGroupAccordion expanded={expandedAcc === histogramsGroupId} onChange={handleChange(histogramsGroupId)} />
+        </ListItem>
+        <Divider />
+        <ListItem key={heatmapsGroupId} sx={{padding: 0}}>
+            <HeatmapsGroupAccordion expanded={expandedAcc === heatmapsGroupId} onChange={handleChange(heatmapsGroupId)} />
         </ListItem>
         <Divider />
       </List>
