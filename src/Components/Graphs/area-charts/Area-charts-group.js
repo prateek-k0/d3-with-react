@@ -49,6 +49,12 @@ export const AreaChartGroupAccordion = ({ expanded, onChange }) => {
                                 <ListItemText primary="Contour Density Chart" />
                             </AccordionLinkButton>
                         </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/area-charts/hexbin-density">
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Hexbin Density Chart" />
+                            </AccordionLinkButton>
+                        </ListItem>
                     </List>
                 </nav>
             </AccordionDetails>
