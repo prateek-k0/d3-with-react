@@ -5,6 +5,7 @@ import AreaChartComponent1 from "./area-chart-1/area-chart-component";
 import DensityAreaChart from "./density-chart/density-chart-component";
 import FilledAreaChart from "./filled-area/filled-area-chart-component";
 import RidgelineChart from "./ridgeline-chart/RidgelineChartComponent";
+import ContourDensityChart from "./contour-density-chart/ContourDensityChartComponent";
 
 export const AreaChartsRoutes = () => {
     return useRoutes([
@@ -27,6 +28,10 @@ export const AreaChartsRoutes = () => {
         {
             path: 'ridgeline',
             element: <RidgelineChart />
+        },
+        {
+            path: 'contour-density',
+            element: <ContourDensityChart />
         },
         {
             path: '*',

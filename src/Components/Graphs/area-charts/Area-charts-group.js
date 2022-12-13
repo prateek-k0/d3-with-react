@@ -43,6 +43,12 @@ export const AreaChartGroupAccordion = ({ expanded, onChange }) => {
                                 <ListItemText primary="Ridgeline Chart" />
                             </AccordionLinkButton>
                         </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/area-charts/contour-density">
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Contour Density Chart" />
+                            </AccordionLinkButton>
+                        </ListItem>
                     </List>
                 </nav>
             </AccordionDetails>
