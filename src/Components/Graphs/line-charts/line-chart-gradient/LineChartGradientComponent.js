@@ -57,7 +57,7 @@ const LineChartGradient = () => {
             .attr("y2", y(max))
             .selectAll("stop")
               .data([
-                {offset: "0%", color: "#03bcff"},
+                {offset: "0%", color: "#038aff"},
                 {offset: "100%", color: "#ff037d"}
               ])
             .enter().append("stop")

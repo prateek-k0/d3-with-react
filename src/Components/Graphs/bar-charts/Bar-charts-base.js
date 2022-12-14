@@ -6,6 +6,7 @@ import StackedBarChartComponent from "./Stacked Bar Chart/StackedBarChartCompone
 import ClusteredBarChart from "./clustered-bar-chart/ClusteredBarChartComponent";
 import HorizontalBarChart from "./horizontal-bar-chart/HorizontalBarChartComponet";
 import DottedBarChart from "./dotted-bar-charts/DottedBarChartComponent";
+import RacingBarChart from "./racing-bar-chart/RacingBarChartComponent";
 
 export const BarChartsRoutes = () => {
     return useRoutes([
@@ -28,6 +29,10 @@ export const BarChartsRoutes = () => {
         {
             path: 'dotted-bar-chart',
             element: <DottedBarChart />
+        },
+        {
+            path: 'racing',
+            element: <RacingBarChart />
         },
         {
             path: '*',

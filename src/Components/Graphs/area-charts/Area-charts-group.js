@@ -22,7 +22,7 @@ export const AreaChartGroupAccordion = ({ expanded, onChange }) => {
                         <ListItem disablePadding>
                             <AccordionLinkButton component={RouterLink} to="/area-charts/area-chart-1">
                                 <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
-                                <ListItemText primary="Area Chart 1" />
+                                <ListItemText primary="Area Chart Basic" />
                             </AccordionLinkButton>
                         </ListItem>
                         <ListItem disablePadding>

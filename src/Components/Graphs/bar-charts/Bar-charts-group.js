@@ -21,7 +21,7 @@ export const BarChartGroupAccordion = ({ expanded, onChange }) => {
                         <ListItem disablePadding>
                             <AccordionLinkButton component={RouterLink} to="/bar-charts/bar-chart-1" >
                                 <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
-                                <ListItemText primary="Bar Chart 1" />
+                                <ListItemText primary="Bar Chart Basic" />
                             </AccordionLinkButton>
                         </ListItem>
                         <ListItem disablePadding>
@@ -46,6 +46,12 @@ export const BarChartGroupAccordion = ({ expanded, onChange }) => {
                             <AccordionLinkButton component={RouterLink} to="/bar-charts/dotted-bar-chart" >
                                 <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
                                 <ListItemText primary="Dotted Bar Chart" />
+                            </AccordionLinkButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <AccordionLinkButton component={RouterLink} to="/bar-charts/racing" >
+                                <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                                <ListItemText primary="Racing Bar Chart" />
                             </AccordionLinkButton>
                         </ListItem>
                     </List>

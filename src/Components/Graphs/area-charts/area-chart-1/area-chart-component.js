@@ -215,7 +215,7 @@ const AreaChartComponent = () => {
     
     return (
         <div className='area-chart-1__wrapper'>
-            <Typography sx={{fontSize: '24px', padding: '16px 0 0 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Area Chart 1</Typography>
+            <Typography sx={{fontSize: '24px', padding: '16px 0 0 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Area Chart Basic</Typography>
             <div ref={graphContRef} className='area-chart-1__cont'></div>
         </div>
     )

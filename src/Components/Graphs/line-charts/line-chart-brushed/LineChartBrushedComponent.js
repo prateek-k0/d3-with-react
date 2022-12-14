@@ -67,7 +67,7 @@ const LineChartBrushed = () => {
             .datum(data)
             .attr("class", "line")  // I add the class line to be able to modify this line later on.
             .attr("fill", "none")
-            .attr("stroke", "#03bcff")
+            .attr("stroke", "#038aff")
             .attr("stroke-width", 1.5)
             .attr("d", d3.line()
                 .x(function(d) { return x(d.date) })
