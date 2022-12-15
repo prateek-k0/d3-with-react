@@ -12,6 +12,7 @@ import { ArcChartsRoutes } from "./Components/Graphs/arc-charts/arc-charts-base"
 import { LineChartsRoutes } from "./Components/Graphs/line-charts/line-charts-base";
 import { HistogramsRoutes } from "./Components/Graphs/histograms/histograms-base";
 import { HeatmapsRoutes } from "./Components/Graphs/heatmaps/heatmaps-base";
+import { MapsRoutes } from "./Components/Graphs/maps/maps-base";
 
 const AppRoutes = () => {
   const routesElements = useRoutes([
@@ -54,6 +55,10 @@ const AppRoutes = () => {
         {
           path: 'heatmaps/*',
           element: <HeatmapsRoutes />
+        },
+        {
+          path: 'maps/*',
+          element: <MapsRoutes />
         },
       ]
     }
