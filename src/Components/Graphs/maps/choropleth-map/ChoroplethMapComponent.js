@@ -10,16 +10,17 @@ const ChoroplethMap = () => {
     const isDarkMode = useSelector(state => state.theme.darkMode);
 
     const renderFunc = useCallback(async (container) => {
-        const width = container.node().clientWidth, height = 1000;
+        const width = container.node().clientWidth, height = 1500;
         const svg = container
             .append("svg")
             .attr("width", '100%')
             .attr("height", height);
 
         // const path = d3.geoPath();
-        const projection = d3.geoNaturalEarth1()
-              .scale(width / 5)
-              .center([10, 0])
+        const projection = d3.geoMercator()
+              .scale(width / 7)
+              .center([0, 0])
+              .rotate([-12, 0])
               .translate([width / 2, height / 2]);
 
         const colorScale = d3.scaleThreshold()
@@ -33,28 +34,51 @@ const ChoroplethMap = () => {
         popData.forEach((d) => {
             data.set(d.code, +d.pop);
         });
-        console.log(popData, geoData);
-        let mouseOver = function(d) {
+
+        const tooltip = container
+            .append("div")
+            .style('display', 'none')
+            .attr("class", "tooltip")
+            .style("background-color", isDarkMode ? '#000' : '#fff')
+            .style("border", "solid")
+            .style("border-width", "2px")
+            .style("border-radius", "5px")
+            .style("padding", "5px")
+            .style('position', 'absolute')
+            .style('color', isDarkMode ? '#fff' : '#000');
+
+        let mouseOver = function(event) {
+            tooltip
+                .style('display', 'block')
             d3.selectAll(".Country")
-            .transition()
-            .duration(300)
-            .style("opacity", 0.5)
+                .transition()
+                .duration(300)
+                .style("opacity", 0.5)
             d3.select(this)
-            .transition()
-            .duration(0)
-            .style("opacity", 1)
-            .style("stroke", isDarkMode ? '#fff' : '#000')
+                .transition()
+                .duration(0)
+                .style("opacity", 1)
+                .style("stroke", isDarkMode ? '#fff' : '#000')
+        }
+
+        let mouseMove = function(event, d) {
+            tooltip
+                .html(d.properties.name + ":<br />" + data.get(d.id) || 0)
+                .style("left", ((event.x) - (tooltip.node().clientWidth / 2)) + "px")
+                .style("top", (event.y) + 20 + "px")
         }
 
         let mouseLeave = function(d) {
+            tooltip
+                .style('display', 'none')
             d3.selectAll(".Country")
-            .transition()
-            .duration(0)
-            .style("opacity", 1)
+                .transition()
+                .duration(0)
+                .style("opacity", 1)
             d3.select(this)
-            .transition()
-            .duration(0)
-            .style("stroke", "transparent")
+                .transition()
+                .duration(0)
+                .style("stroke", "transparent")
         }
 
         svg.append("g")
@@ -74,16 +98,19 @@ const ChoroplethMap = () => {
             .style("stroke", "transparent")
             .attr("class", function(d){ return "Country" } )
             .style("opacity", 1)
-            .on("mouseover", mouseOver )
-            .on("mouseleave", mouseLeave )
+            .on("mouseover", mouseOver)
+            .on("mousemove", mouseMove)
+            .on("mouseleave", mouseLeave);
+
     }, [isDarkMode]);
 
-    const graphContRef = useD3(renderFunc, null, true);
+    const graphContRef = useD3(renderFunc, null, false);
 
     return (
         <div className='map__wrapper'>
             <Typography sx={{fontSize: '24px', padding: '16px 0 20px 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Choropleth Map</Typography>
-            <div ref={graphContRef} className='map__cont'></div>
+            <Typography sx={{fontSize: '22px', padding: '20px', textAlign: 'center', fontWeight: '300', fontFamily: 'system-ui'}}>Country-wise population data (2004)</Typography>
+            <div ref={graphContRef} className='map__cont' style={{padding: '0 0'}}></div>
         </div>
     )
 }
