@@ -5,12 +5,12 @@ import '@fontsource/space-mono/400.css';
 import '@fontsource/abeezee/400.css'
 import { Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
-import IndiaGeoJsonData from './Indian_States.json';
+import IndianStatesGeoJsonData from './Indian_States.json';
 
 const CountryMapIndia = () => {
     const isDarkMode = useSelector(state => state.theme.darkMode);
 
-    const renderFunc = useCallback((container) => {
+    const renderFunc = useCallback(async (container) => {
         const height = 1000;
         const svg = container
             .append("svg")
@@ -22,15 +22,28 @@ const CountryMapIndia = () => {
         const projection = d3.geoMercator()
             .scale(width)
             .translate([-width, 1150]);
-        const geoData = IndiaGeoJsonData;
+
+        const geoStatesData = IndianStatesGeoJsonData;
+        const geoDistrictsData = await d3.json('https://raw.githubusercontent.com/geohacker/india/master/district/india_district.geojson');
 
         svg.append("g")
             .selectAll("path")
-            .data(geoData.features)
+            .data(geoStatesData.features)
             .join("path")
             .attr("fill", "#00bbff")
             .attr("d", d3.geoPath().projection(projection))
-            .style("stroke", isDarkMode ? '#000' : '#fff');
+            .style("stroke", isDarkMode ? '#000' : '#fff')
+            .style('stroke-width', 1);
+
+        svg.append("g")
+            .selectAll("path")
+            .data(geoDistrictsData.features)
+            .join("path")
+            .attr("fill", "#00bbff")
+            .attr("d", d3.geoPath().projection(projection))
+            .style("stroke", isDarkMode ? '#000' : '#fff')
+            .style('opacity', 0.25)
+            .style('stroke-width', 0.5);
 
     }, [isDarkMode]);
 
