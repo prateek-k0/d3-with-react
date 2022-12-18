@@ -18,6 +18,7 @@ import { arcChartsGroupId, ArcChartsGroupAccordion } from '../Graphs/arc-charts/
 import { LineChartGroupAccordion, lineChartGroupId } from '../Graphs/line-charts/line-charts-group';
 import { histogramsGroupId, HistorgarmsGroupAccordion } from '../Graphs/histograms/histograms-group';
 import { heatmapsGroupId, HeatmapsGroupAccordion } from '../Graphs/heatmaps/heatmaps-groups';
+import { treemapsGroupId, TreemapsGroupAccordion } from '../Graphs/treemaps/treemaps-group';
 import { mapsGroupId, MapsGroupAccordion } from '../Graphs/maps/maps-group';
 
 const DrawerComponent = styled((props) => (
@@ -91,6 +92,10 @@ export default function SidebarDrawer() {
         <Divider />
         <ListItem key={heatmapsGroupId} sx={{padding: 0}}>
             <HeatmapsGroupAccordion expanded={expandedAcc === heatmapsGroupId} onChange={handleChange(heatmapsGroupId)} />
+        </ListItem>
+        <Divider />
+        <ListItem key={treemapsGroupId} sx={{padding: 0}}>
+            <TreemapsGroupAccordion expanded={expandedAcc === treemapsGroupId} onChange={handleChange(treemapsGroupId)} />
         </ListItem>
         <Divider />
         <ListItem key={mapsGroupId} sx={{padding: 0}}>

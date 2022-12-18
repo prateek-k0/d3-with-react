@@ -13,6 +13,7 @@ import { LineChartsRoutes } from "./Components/Graphs/line-charts/line-charts-ba
 import { HistogramsRoutes } from "./Components/Graphs/histograms/histograms-base";
 import { HeatmapsRoutes } from "./Components/Graphs/heatmaps/heatmaps-base";
 import { MapsRoutes } from "./Components/Graphs/maps/maps-base";
+import { TreemapsRoutes } from "./Components/Graphs/treemaps/treemaps-base";
 
 const AppRoutes = () => {
   const routesElements = useRoutes([
@@ -55,6 +56,10 @@ const AppRoutes = () => {
         {
           path: 'heatmaps/*',
           element: <HeatmapsRoutes />
+        },
+        {
+          path: 'treemaps/*',
+          element: <TreemapsRoutes />
         },
         {
           path: 'maps/*',
