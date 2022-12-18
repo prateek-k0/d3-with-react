@@ -29,6 +29,12 @@ export const MapsGroupAccordion = ({ expanded, onChange }) => {
                             <ListItemText primary="Choropleth map" />
                         </AccordionLinkButton>
                     </ListItem>
+                    <ListItem disablePadding>
+                        <AccordionLinkButton component={RouterLink} to="/maps/country-map-india">
+                            <TripOriginOutlinedIcon sx={{fontSize: '12px'}}/>
+                            <ListItemText primary="Country Map - India" />
+                        </AccordionLinkButton>
+                    </ListItem>
                 </List>
             </AccordionDetails>
         </Accordion>

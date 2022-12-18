@@ -3,6 +3,7 @@ import React from "react";
 import Box from '@mui/material/Box';
 import MapBasic from "./map-basic/MapBasicComponent";
 import ChoroplethMap from "./choropleth-map/ChoroplethMapComponent";
+import CountryMapIndia from "./Country Map - India/CountryMapComponent";
 
 const MapsDefault = () => {
     return (
@@ -25,6 +26,10 @@ export const MapsRoutes = () => {
         {
             path: 'choropleth',
             element: <ChoroplethMap />
+        },
+        {
+            path: 'country-map-india',
+            element: <CountryMapIndia />
         },
     ]);
 }

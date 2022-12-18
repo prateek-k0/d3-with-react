@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { NavLink as RouterLink } from 'react-router-dom';
 import TripOriginOutlinedIcon from '@mui/icons-material/TripOriginOutlined';
 
-export const treemapsGroupId = 'maps';
+export const treemapsGroupId = 'treemaps';
 
 export const TreemapsGroupAccordion = ({ expanded, onChange }) => {
     return (
