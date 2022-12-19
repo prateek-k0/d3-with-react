@@ -26,24 +26,42 @@ const CountryMapIndia = () => {
         const geoStatesData = IndianStatesGeoJsonData;
         const geoDistrictsData = await d3.json('https://raw.githubusercontent.com/geohacker/india/master/district/india_district.geojson');
 
-        svg.append("g")
-            .selectAll("path")
-            .data(geoStatesData.features)
-            .join("path")
-            .attr("fill", "#00bbff")
-            .attr("d", d3.geoPath().projection(projection))
-            .style("stroke", isDarkMode ? '#000' : '#fff')
-            .style('stroke-width', 1);
-
-        svg.append("g")
+        const districtPaths = svg.append("g")
+            .attr('class', 'districtwise-boundary')
             .selectAll("path")
             .data(geoDistrictsData.features)
             .join("path")
             .attr("fill", "#00bbff")
             .attr("d", d3.geoPath().projection(projection))
             .style("stroke", isDarkMode ? '#000' : '#fff')
-            .style('opacity', 0.25)
-            .style('stroke-width', 0.5);
+            .style('stroke-width', 0.1);
+
+        svg.append("g")
+            .attr('class', 'statewise-boundary')
+            .selectAll("path")
+            .data(geoStatesData.features)
+            .join("path")
+            .attr("fill", "transparent")
+            .attr("d", d3.geoPath().projection(projection))
+            .style("stroke", isDarkMode ? '#000' : '#fff')
+            .style('stroke-width', 1)
+            .on('mouseover', (event, stateData) => {
+                d3.select(event.target)
+                    .style("stroke", '#fac802')
+                    .style('stroke-width', 2)
+                    .raise();
+                console.log(stateData);
+                districtPaths.filter((d) => d.properties.NAME_1 === stateData.properties.NAME_1)
+                    .style("stroke", '#fac802')
+                    .style('stroke-width', 0.67);
+            }).on('mouseleave', (event) => {
+                d3.select(event.target)
+                    .style("stroke", isDarkMode ? '#000' : '#fff')
+                    .style('stroke-width', 1)
+                districtPaths
+                    .style("stroke", isDarkMode ? '#000' : '#fff')
+                    .style('stroke-width', 0.1);
+            });
 
     }, [isDarkMode]);
 
