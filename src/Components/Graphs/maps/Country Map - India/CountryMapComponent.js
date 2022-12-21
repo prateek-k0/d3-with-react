@@ -7,29 +7,32 @@ import '@fontsource/space-mono/400.css';
 import '@fontsource/abeezee/400.css'
 import { Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
-import IndianStatesGeoJsonData from './Indian_States.json';
 import LoadingComp from '../../../Common/LoadingComponent/LoadingComponent';
 import ErrorComp from '../../../Common/ErrorComponent/ErrorComponent';
 
 const CountryMapIndia = () => {
     const isDarkMode = useSelector(state => state.theme.darkMode);
-    // const statesDataURL = 'https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/master/Indian_States';
+
+    const statesDataURL = 'https://raw.githubusercontent.com/Subhash9325/GeoJson-Data-of-Indian-States/master/Indian_States';
     const districtsDataURL = 'https://raw.githubusercontent.com/geohacker/india/master/district/india_district.geojson';
-    const { isSuccess, response: geoDistrictsData, axiosFetch, isLoading } = useAxiosRequest();
+    const { isSuccess: isDistrictsSuccess, response: geoDistrictsData, axiosFetch: axiosFetchDistricts, isLoading: isDistrictsLoading } = useAxiosRequest();
+    const { isSuccess: isStatesSuccess, response: geoStatesData, axiosFetch: axiosFetchStates, isLoading: isStatesLoading } = useAxiosRequest();
 
     useLayoutEffect(() => {
-        if(isSuccess && !isLoading) {
-            console.log(geoDistrictsData);
+        if(isDistrictsSuccess && isStatesSuccess) {
+            console.log('states data', geoStatesData);
+            console.log('districts data', geoDistrictsData);
         }
-    }, [geoDistrictsData, isSuccess, isLoading]);
+    }, [geoDistrictsData, isDistrictsSuccess, geoStatesData, isStatesSuccess]);
 
     useLayoutEffect(() => {
-        axiosFetch({axiosInstance: axios, method: 'get', url: districtsDataURL})
-    }, [axiosFetch]);
+        axiosFetchDistricts({axiosInstance: axios, method: 'get', url: districtsDataURL});
+        axiosFetchStates({axiosInstance: axios, method: 'get', url: statesDataURL});
+    }, [axiosFetchDistricts, axiosFetchStates]);
 
     const renderFunc = useCallback(async (container) => {
 
-        if(!isLoading && isSuccess) {
+        if(isDistrictsSuccess && isStatesSuccess) {
             const height = 1000;
             const svg = container
                 .append("svg")
@@ -41,8 +44,6 @@ const CountryMapIndia = () => {
             const projection = d3.geoMercator()
                 .scale(width)
                 .translate([-width, 1150]);
-
-            const geoStatesData = IndianStatesGeoJsonData;
     
             const districtPaths = svg.append("g")
                 .attr('class', 'districtwise-boundary')
@@ -82,15 +83,15 @@ const CountryMapIndia = () => {
                 });
         }
 
-    }, [isDarkMode, isLoading, isSuccess, geoDistrictsData]);
+    }, [isDarkMode, isDistrictsSuccess, geoDistrictsData, isStatesSuccess, geoStatesData]);
 
-    const graphContRef = useD3(renderFunc, null, true);
+    const graphContRef = useD3(renderFunc, null, false);
 
     return (
         <div className='map__wrapper'>
             <Typography sx={{fontSize: '24px', padding: '16px 0 20px 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Country Map - India</Typography>
-            {isLoading && <LoadingComp loadingText={'Fetching data'}/>}
-            {(!isLoading && !isSuccess) && <ErrorComp errorText={'Error fetching data'} />}
+            {(isDistrictsLoading && isStatesLoading) && <LoadingComp loadingText={'Fetching data'}/>}
+            {((!isDistrictsLoading && !isDistrictsSuccess) || (!isStatesLoading && !isStatesSuccess)) && <ErrorComp errorText={'Error fetching data'} />}
             <div ref={graphContRef} className='map__cont'></div>
         </div>
     )
