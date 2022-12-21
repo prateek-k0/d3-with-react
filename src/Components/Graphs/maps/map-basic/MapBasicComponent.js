@@ -26,7 +26,7 @@ const MapBasic = () => {
         }
     }, [mapData, isSuccess, isLoading]);
 
-    const renderFunc = useCallback(async (container) => {
+    const renderFunc = useCallback((container) => {
         if(isSuccess) {
             const height = 1000;
 
