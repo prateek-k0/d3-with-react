@@ -9,6 +9,7 @@ import { Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import IndianStatesGeoJsonData from './Indian_States.json';
 import LoadingComp from '../../../Common/LoadingComponent/LoadingComponent';
+import ErrorComp from '../../../Common/ErrorComponent/ErrorComponent';
 
 const CountryMapIndia = () => {
     const isDarkMode = useSelector(state => state.theme.darkMode);
@@ -88,7 +89,8 @@ const CountryMapIndia = () => {
     return (
         <div className='map__wrapper'>
             <Typography sx={{fontSize: '24px', padding: '16px 0 20px 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Country Map - India</Typography>
-            {isLoading && <LoadingComp />}
+            {isLoading && <LoadingComp loadingText={'Fetching data'}/>}
+            {(!isLoading && !isSuccess) && <ErrorComp errorText={'Error fetching data'} />}
             <div ref={graphContRef} className='map__cont'></div>
         </div>
     )
