@@ -54,7 +54,7 @@ export default function SidebarDrawer() {
 
   const list = () => (
     <Box
-      sx={{ width: 250 }}
+      sx={{ width: 300 }}
       role="presentation"
     >
       <List sx={{padding: 0}}>

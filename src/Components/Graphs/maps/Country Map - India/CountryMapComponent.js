@@ -30,7 +30,7 @@ const CountryMapIndia = () => {
         axiosFetchStates({axiosInstance: axios, method: 'get', url: statesDataURL});
     }, [axiosFetchDistricts, axiosFetchStates]);
 
-    const renderFunc = useCallback(async (container) => {
+    const renderFunc = useCallback((container) => {
 
         if(isDistrictsSuccess && isStatesSuccess) {
             const height = 1000;

@@ -14,6 +14,7 @@ import { HistogramsRoutes } from "./Components/Graphs/histograms/histograms-base
 import { HeatmapsRoutes } from "./Components/Graphs/heatmaps/heatmaps-base";
 import { MapsRoutes } from "./Components/Graphs/maps/maps-base";
 import { TreemapsRoutes } from "./Components/Graphs/treemaps/treemaps-base";
+import HomepageComponent from "./Components/Home";
 
 const AppRoutes = () => {
   const routesElements = useRoutes([
@@ -21,6 +22,10 @@ const AppRoutes = () => {
       path: '/',
       element: <AppLayout />,
       children: [
+        {
+          index: true,
+          element: <HomepageComponent />
+        },
         {
           path: 'bar-charts/*',     //Decendant Routes: https://www.robinwieruch.de/react-router-descendant-routes/
           element: <BarChartsRoutes />
