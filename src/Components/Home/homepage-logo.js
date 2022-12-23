@@ -3,17 +3,17 @@ import { useD3 } from './../Common/Hooks/useD3'
 import * as d3 from 'd3';
 import { useSelector } from 'react-redux';
 
-const HomepageLogo = () => {
+const HomepageLogo = ({ dimHeight }) => {
     const isDarkMode = useSelector(state => state.theme.darkMode);
-    const border = 20;
-    const width = 800 + (2 * border);
-    const height = 500 + (2 * border);
+    const border = 0;
+    const height = (dimHeight || 500) + (2 * border);
+    const width = height * 1.2 + (2 * border);
     const viewBoxWidth = width + (2 * border);
     const viewBoxHeight = height + (2 * border);
 
     const renderPieChart = useCallback((svg) => {
         const pieChartGroup = svg.append('g')
-            .attr('transform', `translate(${width / 3}, ${height / 2})`)
+            .attr('transform', `translate(${width / 2.5}, ${height / 2})`)
             .attr('class', 'pie-chart-group');
 
         const pieChartData = [
@@ -21,7 +21,7 @@ const HomepageLogo = () => {
             { value: 10, radius: 0 },
             { value: 20, radius: 10 },
         ];
-        const radius = (height / 2) - 100;
+        const radius = (height / 2) - 50;
         const arc = d3.arc()
             .innerRadius(radius - 20)
             .outerRadius((d) => radius + d.data.radius)
@@ -92,7 +92,7 @@ const HomepageLogo = () => {
 
     const renderBarChart = useCallback((svg) => {
         const barChartGroup = svg.append('g')
-            .attr('transform', `translate(${width / 3}, ${0})`)
+            .attr('transform', `translate(${width / 2.5}, ${0})`)
             .attr('class', 'bar-chart-group');
 
         const barChartData = [
@@ -105,7 +105,7 @@ const HomepageLogo = () => {
         const xOffset = 5, yOffset = 80;
         barChartGroup.append('rect')
             .attr('class', 'bar-canvas-rect')
-            .attr('x', -xOffset)
+            .attr('x', -xOffset / 2)
             .attr('y', yOffset)
             .attr('width', height - (3 * yOffset) + xOffset)
             .attr('height', height - 2 * yOffset)
