@@ -42,6 +42,7 @@ const DrawerComponent = styled((props) => (
 
 export default function SidebarDrawer() {
   const sideBarStatus = useSelector(getSidebarStatus);
+  const isDarkMode = useSelector(state => state.theme.darkMode);
   const dispatch = useDispatch();
   const [expandedAcc, setExpandedAcc] = useState(false);
   
@@ -61,7 +62,7 @@ export default function SidebarDrawer() {
       role="presentation"
     >
       <Box sx={{ maxWidth: 300, maxHeight: logoHeight, overflow: 'hidden', display: 'flex', justifyContent: 'center' }}>
-          <HomepageLogo renderHeight={logoHeight * 2} dimHeight={logoHeight} canvasColor='#353535'/>
+          <HomepageLogo renderHeight={logoHeight * 2} dimHeight={logoHeight} canvasColor={isDarkMode ? '#353535' : '#fff'}/>
       </Box>
       <Divider />
       <List sx={{padding: 0}}>
