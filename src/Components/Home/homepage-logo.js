@@ -53,6 +53,41 @@ const HomepageLogo = () => {
             .append('path')
             .attr('d', arcInner)
             .attr('fill', isDarkMode ? '#fff' : '#000');
+
+        const bubbleGroup = pieChartGroup
+            .append('g')
+            .attr('class', 'bubble-chart-group')
+        const bubbleRadius = radius / 2;
+        bubbleGroup.append('circle')
+            .attr('cx', 0)
+            .attr('cy', 0)
+            .attr('r', bubbleRadius)
+            .attr('fill', isDarkMode ? '#ffffff20' : '#00000020');
+
+        bubbleGroup.append('circle')
+            .attr('cx', -bubbleRadius / 2.5)
+            .attr('cy', -bubbleRadius / 4)
+            .attr('r', bubbleRadius / 4)
+            .attr('stroke-width', 4)
+            .attr('stroke', isDarkMode ? '#fff' : '#000')
+            .attr('fill', 'transparent');
+
+        bubbleGroup.append('circle')
+            .attr('cx', -bubbleRadius / 2)
+            .attr('cy', bubbleRadius / 3)
+            .attr('r', bubbleRadius / 8)
+            .attr('stroke-width', 4)
+            .attr('stroke', isDarkMode ? '#fff' : '#000')
+            .attr('fill', 'transparent');
+
+        bubbleGroup.append('circle')
+            .attr('cx', -bubbleRadius / 40)
+            .attr('cy', bubbleRadius / 3)
+            .attr('r', bubbleRadius / 5)
+            .attr('stroke-width', 4)
+            .attr('stroke', isDarkMode ? '#fff' : '#000')
+            .attr('fill', 'transparent');
+    
     }, [isDarkMode, height, width]);
 
     const renderBarChart = useCallback((svg) => {
@@ -67,9 +102,17 @@ const HomepageLogo = () => {
             {label: 4, value: 40},
         ]
 
+        const xOffset = 5, yOffset = 80;
+        barChartGroup.append('rect')
+            .attr('class', 'bar-canvas-rect')
+            .attr('x', -xOffset)
+            .attr('y', yOffset)
+            .attr('width', height - (3 * yOffset) + xOffset)
+            .attr('height', height - 2 * yOffset)
+            .attr('fill', isDarkMode ? '#121212' : '#fff')
+
         const axesLines = barChartGroup.append('g')
             .attr('class', 'axes-lines');
-        const xOffset = 5, yOffset = 80;
         axesLines.append('line')
             .attr('x1', xOffset)
             .attr('y1', height - yOffset)
@@ -125,7 +168,7 @@ const HomepageLogo = () => {
             .attr('class', 'market')
             .attr('stroke', isDarkMode ? '#fff' : '#000')
             .attr('stroke-width', 4)
-            .attr('fill', isDarkMode ? '#000000de' : '#fff')
+            .attr('fill', isDarkMode ? '#121212' : '#fff')
             .attr('r', 10)
             .attr('cx', (d) => xScale(d.label) + xScale.bandwidth() / 2)
             .attr('cy', (d) => yScale(d.value + 10));
