@@ -6,14 +6,11 @@ import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
 import '@fontsource/abeezee/400.css'
 import { Typography } from '@mui/material';
-import { useSelector } from 'react-redux';
 import LoadingComp from '../../../Common/LoadingComponent/LoadingComponent';
 import ErrorComp from '../../../Common/ErrorComponent/ErrorComponent';
 
 const ArcDiagramMouseEvents = () => {
-    const isDarkMode = useSelector(state => state.theme.darkMode);
-
-    const { isLoading, isSuccess, axiosFetch, response: data } = useAxiosRequest();
+    const { isLoading, isSuccess, axiosFetch, response: dataRaw } = useAxiosRequest();
     const dataURL = 'https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_researcherNetwork.json';
 
     useLayoutEffect(() => {
@@ -22,9 +19,9 @@ const ArcDiagramMouseEvents = () => {
 
     useLayoutEffect(() => {
         if(isSuccess && !isLoading) {
-            console.log(data);
+            console.log(dataRaw);
         }
-    }, [data, isSuccess, isLoading]);
+    }, [dataRaw, isSuccess, isLoading]);
 
     const renderFunc = useCallback((container) => {
         if(isSuccess) {
@@ -39,7 +36,7 @@ const ArcDiagramMouseEvents = () => {
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
                 .attr("transform",`translate(${margin.left},${margin.top})`);
-
+            const data = Object.create(dataRaw);
             // List of node names
             const allNodes = data.nodes.map(d => d.name)
 
@@ -107,7 +104,7 @@ const ArcDiagramMouseEvents = () => {
                 .text(d=>d.name)
                 .style("text-anchor", "end")
                 .attr("transform",d=>`translate(${x(d.name)},${height-15}) rotate(-45)`)
-                .attr('fill', isDarkMode ? '#fff' : '#000')
+                .attr('fill', 'darkgrey')
                 .style("font-size", 6);
 
             // Add the highlighting functionality
@@ -134,7 +131,7 @@ const ArcDiagramMouseEvents = () => {
                         .style("font-size", 6 )
             })
         }
-    }, [isDarkMode, isSuccess, data]);
+    }, [isSuccess, dataRaw]);
 
     const graphContRef = useD3(renderFunc, null, false);
 
