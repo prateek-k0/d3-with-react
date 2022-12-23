@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getSidebarStatus } from '../../Store/sidebarSlice';
 import { toggleOrSetSidebar } from '../../Store/sidebarSlice';
 import styled from '@emotion/styled';
+import HomepageLogo from '../Home/homepage-logo';
 // component imports
 import { barChartGroupId, BarChartGroupAccordion } from '../Graphs/bar-charts/Bar-charts-group';
 import { pieChartGroupId, PieChartGroupAccordion } from '../Graphs/pie-charts/Pie-charts-group';
@@ -52,11 +53,17 @@ export default function SidebarDrawer() {
     // console.log(expandedAcc);
   }, [expandedAcc])
 
+  const logoHeight = 192;
+
   const list = () => (
     <Box
       sx={{ width: 300 }}
       role="presentation"
     >
+      <Box sx={{ maxWidth: 300, maxHeight: logoHeight, overflow: 'hidden', display: 'flex', justifyContent: 'center' }}>
+          <HomepageLogo renderHeight={logoHeight * 2} dimHeight={logoHeight} canvasColor='#353535'/>
+      </Box>
+      <Divider />
       <List sx={{padding: 0}}>
         <ListItem key={areaChartGroupId} sx={{padding: 0}}>
             <AreaChartGroupAccordion expanded={expandedAcc === areaChartGroupId} onChange={handleChange(areaChartGroupId)} />

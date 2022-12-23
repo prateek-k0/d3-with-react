@@ -3,7 +3,7 @@ import HomepageLogo from "./homepage-logo";
 
 const HomepageComponent = () => {
     return (
-        <HomepageLogo />
+        <HomepageLogo renderHeight={512} dimHeight={512} />
     );
 }
 
