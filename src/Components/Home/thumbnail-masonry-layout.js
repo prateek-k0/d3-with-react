@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import '@fontsource/abeezee/400.css'
 // image imports
-import arcDiagram from './chart-thumbnails/arc-diagram.png'
+// import arcDiagram from './chart-thumbnails/arc-diagram.png'
 import arcMouseevents from './chart-thumbnails/arc-mouseevents.png'
 import bubbleScatter from './chart-thumbnails/bubble-scatter.png'
 import chordColored from './chart-thumbnails/chord-colored.png'
@@ -35,7 +35,7 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: 0,
     textAlign: 'center',
     // color: theme.palette.text.secondary,
-    borderRadius: 0,
+    borderRadius: '5px',
     '&:hover' : {
         '.thumbnail-backdrop' : {
             opacity: 1,
@@ -44,7 +44,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const imageList = [
-    { img: arcDiagram, link: '/arc-diagrams/arc-diagram-basic', title: 'Arc diagram basic' },
+    // { img: arcDiagram, link: '/arc-diagrams/arc-diagram-basic', title: 'Arc diagram basic' },
     { img: arcMouseevents, link: '/arc-diagrams/arc-diagram-mouse', title: 'Arc diagram with mouse events' },
     { img: bubbleScatter, link: '/bubble-charts/bubble-scatter-plot', title: 'Bubble scatter plot' },
     { img: chordColored, link: '/pie-charts/chord-colored', title: 'Chord chart colored' },
@@ -69,19 +69,19 @@ const imageList = [
 const ThumbnailMasonry = () => {
     const isDarkMode = useSelector(state => state.theme.darkMode);
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '25px 0 5px', backgroundColor: isDarkMode ? '#ffffff1f' : '#0000001f', maxWidth: '1040px', width: '1040px', flex: '0 0 1040px', justifySelf: 'center', borderRadius: '8px'}}>
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '25px 0 5px', backgroundColor: isDarkMode ? '#ffffff1f' : '#0000001f', maxWidth: '1040px', width: '1040px', flex: '0 0 1040px', justifySelf: 'center', borderRadius: '10px'}}>
             <Box sx={{ width: '100%', maxWidth: '1010px', display: 'flex', justifyContent: 'center' }}>
                 <Masonry columns={3} spacing={2}>
                 {imageList.map((imgItem, index) => (
                     <Item key={index}>
-                        <Link to={imgItem.link} style={{textDecoration: 'none', color: '#fff', position: 'relative', flex: '0 0 320px', width: '320px', maxWidth: '320px'}}>
+                        <Link to={imgItem.link} style={{textDecoration: 'none', color: '#fff', position: 'relative', width: '320px', maxWidth: '320px'}}>
                             <img
                                 src={imgItem.img}
                                 alt={'graph'}
                                 style={{
-                                    borderRadius: 0,
+                                    borderRadius: '5px',
                                     display: 'block',
-                                    width: '320px',
+                                    width: '100%',
                                 }}
                             />
                             <div className="thumbnail-backdrop">
