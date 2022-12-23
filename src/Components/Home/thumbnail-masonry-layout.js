@@ -69,7 +69,7 @@ const imageList = [
 const ThumbnailMasonry = () => {
     const isDarkMode = useSelector(state => state.theme.darkMode);
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '25px 0 5px', backgroundColor: isDarkMode ? '#ffffff1f' : '#0000001f', maxWidth: '1040px', width: '1040px', flex: '0 0 1040px', justifySelf: 'center'}}>
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '25px 0 5px', backgroundColor: isDarkMode ? '#ffffff1f' : '#0000001f', maxWidth: '1040px', width: '1040px', flex: '0 0 1040px', justifySelf: 'center', borderRadius: '8px'}}>
             <Box sx={{ width: '100%', maxWidth: '1010px', display: 'flex', justifyContent: 'center' }}>
                 <Masonry columns={3} spacing={2}>
                 {imageList.map((imgItem, index) => (
