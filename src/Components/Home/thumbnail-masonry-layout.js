@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 import '@fontsource/abeezee/400.css'
 // image imports
-// import arcDiagram from './chart-thumbnails/arc-diagram.png'
+import arcDiagram from './chart-thumbnails/arc-diagram.png'
 import arcMouseevents from './chart-thumbnails/arc-mouseevents.png'
 import bubbleScatter from './chart-thumbnails/bubble-scatter.png'
 import chordColored from './chart-thumbnails/chord-colored.png'
@@ -44,7 +44,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const imageList = [
-    // { img: arcDiagram, link: '/arc-diagrams/arc-diagram-basic', title: 'Arc diagram basic' },
     { img: arcMouseevents, link: '/arc-diagrams/arc-diagram-mouse', title: 'Arc diagram with mouse events' },
     { img: bubbleScatter, link: '/bubble-charts/bubble-scatter-plot', title: 'Bubble scatter plot' },
     { img: chordColored, link: '/pie-charts/chord-colored', title: 'Chord chart colored' },
@@ -64,6 +63,7 @@ const imageList = [
     { img: sunburst, link: '/pie-charts/sunburst-chart', title: 'Sunburst' },
     { img: treemap, link: '/treemaps/basic', title: 'Treemap' },
     { img: zoomableBubble, link: '/bubble-charts/circular-pack-zoom', title: 'Zoomable bubble chart' },
+    { img: arcDiagram, link: '/arc-diagrams/arc-diagram-basic', title: 'Arc diagram basic' },
 ]
 
 const ThumbnailMasonry = () => {
