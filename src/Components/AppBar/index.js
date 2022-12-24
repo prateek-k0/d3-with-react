@@ -12,7 +12,7 @@ import styled from '@emotion/styled';
 const AppBar = styled((props) => (
   <MuiAppBar { ...props} />
 ))(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#4c7fa8'
+  backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#023673'
 }));
 
 export default function AppBarHeader() {
