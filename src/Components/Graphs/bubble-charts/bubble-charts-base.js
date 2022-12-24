@@ -1,18 +1,10 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
-import Box from '@mui/material/Box';
 import BasicCircularPacking from "./BasicCircularPacking/BasicCircularPackingComponent";
 import BubbleForceSimulation from "./BubbleForceSimulation/BubbleForceSimulationComponent";
 import ZoomableCircularPacking from "./ZoomableCircularPacking/ZoomableCircularPackingComponent";
 import BubbleChartScatterPlot from "./BubbleChartScatter/BubbleChartScatterComponent";
-
-const BubbleChartsDefault = () => {
-    return (
-        <Box>
-            No such bubble chart found
-        </Box>
-    )
-}
+import Default404Component from "../../404Component";
 
 export const BubbleChartsRoutes = () => {
     return useRoutes([
@@ -34,7 +26,7 @@ export const BubbleChartsRoutes = () => {
         },
         {
             path: '*',
-            element: <BubbleChartsDefault />
+            element: <Default404Component />
         },
     ]);
 }

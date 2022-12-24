@@ -1,17 +1,9 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
-import Box from '@mui/material/Box';
 import ArcDiagramMouseEvents from "./arc-diagram-with-mouse-events/ArcDiagramMouseEventsComponent";
 import ArcDiagramBasic from "./arc-diagram-basic/ArcDiagramBasicComponent";
 import ArcDiagramVertical from "./arc-diagram-vertical/ArcDiagramVerticalComponent";
-
-const ArcChartsDefault = () => {
-    return (
-        <Box>
-            No such arc chart found
-        </Box>
-    )
-}
+import Default404Component from "../../404Component";
 
 export const ArcChartsRoutes = () => {
     return useRoutes([
@@ -29,7 +21,7 @@ export const ArcChartsRoutes = () => {
         },
         {
             path: '*',
-            element: <ArcChartsDefault />
+            element: <Default404Component />
         },
     ]);
 }

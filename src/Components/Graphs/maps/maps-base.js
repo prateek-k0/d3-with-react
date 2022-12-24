@@ -1,23 +1,15 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
-import Box from '@mui/material/Box';
 import MapBasic from "./map-basic/MapBasicComponent";
 import ChoroplethMap from "./choropleth-map/ChoroplethMapComponent";
 import CountryMapIndia from "./Country Map - India/CountryMapComponent";
-
-const MapsDefault = () => {
-    return (
-        <Box>
-            no such map found
-        </Box>
-    )
-}
+import Default404Component from "../../404Component";
 
 export const MapsRoutes = () => {
     return useRoutes([
         {
             path: '*',
-            element: <MapsDefault />
+            element: <Default404Component />
         },
         {
             path: 'basic',

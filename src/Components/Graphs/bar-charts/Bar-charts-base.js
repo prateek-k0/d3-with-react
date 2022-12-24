@@ -1,12 +1,12 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
-import Box from '@mui/material/Box';
 import BarChart from "./bar-chart-1/Bar-Chart-1";
 import StackedBarChartComponent from "./Stacked Bar Chart/StackedBarChartComponent";
 import ClusteredBarChart from "./clustered-bar-chart/ClusteredBarChartComponent";
 import HorizontalBarChart from "./horizontal-bar-chart/HorizontalBarChartComponet";
 import DottedBarChart from "./dotted-bar-charts/DottedBarChartComponent";
 import RacingBarChart from "./racing-bar-chart/RacingBarChartComponent";
+import Default404Component from "../../404Component";
 
 export const BarChartsRoutes = () => {
     return useRoutes([
@@ -36,15 +36,7 @@ export const BarChartsRoutes = () => {
         },
         {
             path: '*',
-            element: <BarChartsDefault />
+            element: <Default404Component />
         },
     ])
-}
-
-const BarChartsDefault = () => {
-    return (
-        <Box>
-            No such bar chart found
-        </Box>
-    )
 }

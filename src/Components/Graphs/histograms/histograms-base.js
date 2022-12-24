@@ -1,22 +1,14 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
-import Box from '@mui/material/Box';
 import HistogramBasic from "./histogram-basic/HistogramBasicComponent";
 import DoubleHistogram from "./double-histogram/DoubleHistogramComponent";
-
-const HistogramsDefault = () => {
-    return (
-        <Box>
-            no such histogram found found
-        </Box>
-    )
-}
+import Default404Component from "../../404Component";
 
 export const HistogramsRoutes = () => {
     return useRoutes([
         {
             path: '*',
-            element: <HistogramsDefault />
+            element: <Default404Component />
         },
         {
             path: 'basic',

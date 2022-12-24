@@ -1,20 +1,12 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
-import Box from '@mui/material/Box';
 import LineChartBasic from "./line-chart-basic/LineChartsBasic";
 import MultiLineChart from "./multi-line-chart/MultiLineChartComponent";
 import LineChartGradient from "./line-chart-gradient/LineChartGradientComponent";
 import LineChartBrushed from "./line-chart-brushed/LineChartBrushedComponent";
 import LineChartMultipleInputs from "./line-chart-multiple-input/LineChartMultipleInput";
 import MultipleCharts from "./multiple-charts/MultipleChartsComponent";
-
-const LineChartDefault = () => {
-    return (
-        <Box>
-            No such line chart found
-        </Box>
-    )
-}
+import Default404Component from "../../404Component";
 
 export const LineChartsRoutes = () => {
     return useRoutes([
@@ -44,7 +36,7 @@ export const LineChartsRoutes = () => {
         },
         {
             path: '*',
-            element: <LineChartDefault />
+            element: <Default404Component />
         },
     ]);
 }

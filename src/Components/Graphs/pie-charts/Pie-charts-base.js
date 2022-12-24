@@ -1,6 +1,5 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
-import Box from '@mui/material/Box';
 import PieChartWithLabels from "./pie-chart-labels/PieChartWithLabelsComponent";
 import PieChartPercentageDistribution from "./pie-chart-percentage-distribution/PieChartComponent";
 import DonutChart from "./donut-chart/DonutChartComponent";
@@ -8,6 +7,7 @@ import SunburstChart from "./sunburst-chart/SunburstChartComponent";
 import ZoomableSunburst from "./zoomable-sunburst/ZoomableSunburstComponent";
 import ChordChartColored from "./chord-chart-colored/ChordChartColoredComponent";
 import ChordChartLabeled from "./chord-chart-labeled/ChordChartLabeledComponent";
+import Default404Component from "../../404Component";
 
 export const PieChartsRoutes = () => {
     return useRoutes([
@@ -41,15 +41,7 @@ export const PieChartsRoutes = () => {
         },
         {
             path: '*',
-            element: <PieChartsDefault />
+            element: <Default404Component />
         },
     ]);
-}
-
-const PieChartsDefault = () => {
-    return (
-        <Box>
-            No such pie chart found
-        </Box>
-    )
 }

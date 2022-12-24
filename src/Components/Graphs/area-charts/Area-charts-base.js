@@ -1,12 +1,12 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
-import Box from '@mui/material/Box';
 import AreaChartComponent1 from "./area-chart-1/area-chart-component";
 import DensityAreaChart from "./density-chart/density-chart-component";
 import FilledAreaChart from "./filled-area/filled-area-chart-component";
 import RidgelineChart from "./ridgeline-chart/RidgelineChartComponent";
 import ContourDensityChart from "./contour-density-chart/ContourDensityChartComponent";
 import HexbinDensityChart from "./hexbin-density/HexbinDensityChartComponent";
+import Default404Component from "../../404Component";
 
 export const AreaChartsRoutes = () => {
     return useRoutes([
@@ -40,15 +40,7 @@ export const AreaChartsRoutes = () => {
         },
         {
             path: '*',
-            element: <AreaChartsDefault />
+            element: <Default404Component />
         },
     ])
-}
-
-const AreaChartsDefault = () => {
-    return (
-        <Box>
-            No such area chart found
-        </Box>
-    )
 }

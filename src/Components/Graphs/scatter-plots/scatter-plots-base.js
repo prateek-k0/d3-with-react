@@ -1,18 +1,10 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
-import Box from '@mui/material/Box';
 import ScatterPlotBrush from "./scatter-plot-with-brush/ScatterPlotBrushComponent";
 import ScatterPlotBrushZoom from "./scatter-plot-brush-zoom/ScatterPlotBrushZoomComponent";
 import ScatterPlotGrouped from "./scatter-plot-grouped/ScatterPlotGrouped";
 import ScatterPlotBasic from "./scatter-plot-basic/ScatterPlotBasicComponent";
-
-const ScatterPlotsDefault = () => {
-    return (
-        <Box>
-            no such scatter plot found
-        </Box>
-    )
-}
+import Default404Component from "../../404Component";
 
 export const ScatterChartsRoutes = () => {
     return useRoutes([
@@ -34,7 +26,7 @@ export const ScatterChartsRoutes = () => {
         },
         {
             path: '*',
-            element: <ScatterPlotsDefault />
+            element: <Default404Component />
         },
     ]);
 }

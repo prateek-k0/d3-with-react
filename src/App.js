@@ -15,6 +15,7 @@ import { HeatmapsRoutes } from "./Components/Graphs/heatmaps/heatmaps-base";
 import { MapsRoutes } from "./Components/Graphs/maps/maps-base";
 import { TreemapsRoutes } from "./Components/Graphs/treemaps/treemaps-base";
 import HomepageComponent from "./Components/Home";
+import Default404Component from "./Components/404Component";
 
 const AppRoutes = () => {
   const routesElements = useRoutes([
@@ -69,6 +70,10 @@ const AppRoutes = () => {
         {
           path: 'maps/*',
           element: <MapsRoutes />
+        },
+        {
+          path: '*',
+          element: <Default404Component />
         },
       ]
     }

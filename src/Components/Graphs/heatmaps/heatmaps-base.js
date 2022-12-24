@@ -1,22 +1,14 @@
 import { useRoutes } from "react-router-dom";
 import React from "react";
-import Box from '@mui/material/Box';
 import HeatmapBasic from "./heatmap-basic/HeatmapBasicComponent";
 import HeatmapWithTooltip from "./heatmap-tooltip/HeatmapTooltipComponent";
-
-const HeatmapsDefault = () => {
-    return (
-        <Box>
-            no such heatmap found
-        </Box>
-    )
-}
+import Default404Component from "../../404Component";
 
 export const HeatmapsRoutes = () => {
     return useRoutes([
         {
             path: '*',
-            element: <HeatmapsDefault />
+            element: <Default404Component />
         },
         {
             path: 'basic',
