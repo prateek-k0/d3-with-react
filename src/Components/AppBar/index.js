@@ -39,17 +39,17 @@ export default function AppBarHeader() {
               <MenuIcon />
             </IconButton>
             <Divider orientation="vertical" variant="middle" flexItem sx={{ borderColor: '#ffffff7f', marginTop: '12px', marginBottom: '12px' }} />
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ ml: 0, mr: 0, width: '52px', height: '52px' }}
-            >
-              <RouterLink to='/' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffffef'}}>
+            <RouterLink to='/' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffffef'}}>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ ml: 0, mr: 0, width: '52px', height: '52px' }}
+              >
                 <HomeIcon sx={{ width: '28px', height: '28px' }}/>
-              </RouterLink>
-            </IconButton>
+              </IconButton>
+            </RouterLink>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0' }}>
             <Link href='https://github.com/prateek-k0/d3-chart-library' underline='none' target='_blank' rel='noopener' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffffef'}}>
