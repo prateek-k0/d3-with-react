@@ -3,6 +3,8 @@
 
 A small collection of charts made with D3.js & React.
 
+[Click here to see the deployed version](https://prateek-k0.github.io/d3-chart-library/)
+
 ## Tech Stack
 
 
@@ -41,7 +43,7 @@ Start the server
 
 
 ## Acknowledgements
- - Quite many graphs were used from the awesome [D3 Chart Gallery](https://d3-graph-gallery.com/about.html)
+ - Quite many charts were used from the awesome [D3 Chart Gallery](https://d3-graph-gallery.com/about.html)
  - For easy readme formatting: [Readme Editor](https://readme.so/)
 
 
