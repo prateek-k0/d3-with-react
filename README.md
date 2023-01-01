@@ -10,7 +10,7 @@ A small collection of charts made with D3.js & React.
 
 **JS Framework:** React
 
-**Themes:** Material-UI
+**Styling:** Material-UI
 
 **Charting Library:** D3.js
 
@@ -44,7 +44,7 @@ Start the server
 
 ## Acknowledgements
  - Quite many charts were used from the awesome [D3 Chart Gallery](https://d3-graph-gallery.com/about.html)
- - For easy readme formatting: [Readme Editor](https://readme.so/)
+ - For easy readme formatting: [readme.so](https://readme.so/)
 
 
 ## Authors
