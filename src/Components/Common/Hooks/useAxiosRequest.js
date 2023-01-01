@@ -14,7 +14,6 @@ const useAxiosRequest = () => {
             url,
             requestConfig = {}
         } = configObj;
-
         try {
             setIsLoading(true);
             const controllerInstance = new AbortController();
