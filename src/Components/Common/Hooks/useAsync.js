@@ -9,19 +9,14 @@ const useAsync = (callback, immediate = true) => {
         setStatus('pending');
         setValue(null);
         setError(null);
-        const isAsyncFunction = callback[Symbol.toStringTag] === 'AsyncFunction';
-        if (isAsyncFunction) {
-            callback()
-            .then((result) => {
+        callback()
+            ?.then((result) => {
                 setValue(result);
                 setStatus('fulfilled');
-            }).catch((err) => {
+            })?.catch((err) => {
                 setError(err);
                 setStatus('rejected');
             });
-        } else {
-            throw new Error('Callback is not an async function. useAync only works with async functions.');
-        }
     }, [callback]);
 
     // Call execute if we want to fire it right away.
