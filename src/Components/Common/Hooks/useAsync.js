@@ -9,6 +9,7 @@ const useAsync = (callback, immediate = true) => {
         setStatus('pending');
         setValue(null);
         setError(null);
+
         callback()
             ?.then((result) => {
                 setValue(result);

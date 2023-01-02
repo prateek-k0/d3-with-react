@@ -11,6 +11,7 @@ export const useD3 = ((renderFunc, dependencies, resizeable = true, onCleanup = 
     }, [resizeable, refWidth]);
 
     const ref = useGetResizeableElementRef(resizerCallback);
+
     const resizeableDep = resizeable ? refWidth : null;
 
     useLayoutEffect(() => {

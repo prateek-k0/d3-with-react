@@ -12,13 +12,13 @@ const HomepageComponent = () => {
                 <HomepageLogo renderHeight={512} dimHeight={256} />
             </Box>
             <Typography sx={{ fontSize: '36px', margin: '0 0 30px', fontFamily: '"ABeeZee", sans-serif', lineHeight: '52px' }}>
-                D3.js Chart Library
+                D3.js with React
             </Typography>
             <Typography sx={{ fontSize: '24px', margin: '0 0 40px', width: '600px', textAlign: 'center', fontFamily: '"ABeeZee", sans-serif' }}>
-                A small collection of charts made with D3. 
+                A small collection of React components for quick prototyping of charts with D3.
             </Typography>
             <Typography sx={{ fontSize: '20px', margin: '20px 0 20px', width: '720px', textAlign: 'center', fontWeight: '300', fontFamily: 'system-ui' }}>
-                Below are featured a few of the graphs. You can also navigate using the sidebar for all the available ones with type segregation.
+                Below are featured a few charts. You can also navigate using the sidebar for all the available ones with type segregation.
             </Typography>
             <ThumbnailMasonry />
         </Box>
