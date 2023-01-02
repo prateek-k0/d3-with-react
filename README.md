@@ -1,9 +1,9 @@
 
-# D3.js Chart Library
+# D3.js with React
 
-A small collection of charts made with D3.js & React.
+A small collection of React components for quick prototyping of charts with D3.
 
-[Click here to see the deployed version](https://prateek-k0.github.io/d3-chart-library/)
+<!-- [Click here to see the deployed version](https://prateek-k0.github.io/d3-chart-library/) -->
 
 ## Tech Stack
 
