@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import React from "react";
 import ArcDiagramMouseEvents from "./arc-diagram-with-mouse-events/ArcDiagramMouseEventsComponent";
 import ArcDiagramBasic from "./arc-diagram-basic/ArcDiagramBasicComponent";
@@ -6,10 +6,11 @@ import ArcDiagramVertical from "./arc-diagram-vertical/ArcDiagramVerticalCompone
 import Default404Component from "../../404Component";
 
 export const ArcChartsRoutes = () => {
+    const location = useLocation();
     return useRoutes([
         {
             path: 'arc-diagram-mouse',
-            element: <ArcDiagramMouseEvents />
+            element: <ArcDiagramMouseEvents />,
         },
         {
             path: 'arc-diagram-basic',
@@ -23,5 +24,5 @@ export const ArcChartsRoutes = () => {
             path: '*',
             element: <Default404Component />
         },
-    ]);
+    ], location);
 }

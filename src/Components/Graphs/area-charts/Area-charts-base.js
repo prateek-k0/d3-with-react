@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import React from "react";
 import AreaChartComponent1 from "./area-chart-1/area-chart-component";
 import DensityAreaChart from "./density-chart/density-chart-component";
@@ -9,6 +9,7 @@ import HexbinDensityChart from "./hexbin-density/HexbinDensityChartComponent";
 import Default404Component from "../../404Component";
 
 export const AreaChartsRoutes = () => {
+    const location = useLocation();
     return useRoutes([
         // {
         //     index: true,
@@ -42,5 +43,5 @@ export const AreaChartsRoutes = () => {
             path: '*',
             element: <Default404Component />
         },
-    ])
+    ], location)
 }

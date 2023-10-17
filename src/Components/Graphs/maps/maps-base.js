@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import React from "react";
 import MapBasic from "./map-basic/MapBasicComponent";
 import ChoroplethMap from "./choropleth-map/ChoroplethMapComponent";
@@ -6,6 +6,7 @@ import CountryMapIndia from "./Country Map - India/CountryMapComponent";
 import Default404Component from "../../404Component";
 
 export const MapsRoutes = () => {
+    const location = useLocation();
     return useRoutes([
         {
             path: '*',
@@ -23,5 +24,5 @@ export const MapsRoutes = () => {
             path: 'country-map-india',
             element: <CountryMapIndia />
         },
-    ]);
+    ], location);
 }

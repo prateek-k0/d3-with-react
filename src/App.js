@@ -1,7 +1,8 @@
 import React from "react";
 import ThemeWrapper from "./Components/Themes/Wrapper";
 import AppLayout from "./Components/Layouts/AppLayout";
-import { useRoutes } from "react-router-dom";
+import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation, useRoutes } from "react-router-dom";
 
 import { BarChartsRoutes } from "./Components/Graphs/bar-charts/Bar-charts-base";
 import { PieChartsRoutes } from "./Components/Graphs/pie-charts/Pie-charts-base";
@@ -18,6 +19,7 @@ import HomepageComponent from "./Components/Home";
 import Default404Component from "./Components/404Component";
 
 const AppRoutes = () => {
+  const location = useLocation();
   const routesElements = useRoutes([
     {
       path: '/',
@@ -25,7 +27,7 @@ const AppRoutes = () => {
       children: [
         {
           index: true,
-          element: <HomepageComponent />
+          element: <HomepageComponent />,
         },
         {
           path: 'bar-charts/*',     //Decendant Routes: https://www.robinwieruch.de/react-router-descendant-routes/
@@ -77,14 +79,14 @@ const AppRoutes = () => {
         },
       ]
     }
-  ]);
+  ], location);
   return routesElements;
 }
 
 const App = () => {
   return (
     <ThemeWrapper>
-      <AppRoutes />
+        <AppRoutes />
     </ThemeWrapper>
   );
 }

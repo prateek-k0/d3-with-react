@@ -1,9 +1,11 @@
 import React, { useMemo, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { useD3 } from '../../../Common/Hooks/useD3';
 import * as d3 from 'd3';
 import '@fontsource/space-mono/400.css';
 import '@fontsource/abeezee/400.css'
 import { Typography } from '@mui/material';
+import { pageTransitionConfig } from '../../../Common/AnimationConfig';
 
 const data = [
     {
@@ -214,10 +216,16 @@ const AreaChartComponent = () => {
     }
     
     return (
-        <div className='area-chart-1__wrapper'>
+        <motion.div 
+            className='area-chart-1__wrapper'
+            variants={pageTransitionConfig}
+            initial="start"
+            animate="animate"
+            exit="end"
+        >
             <Typography sx={{fontSize: '24px', padding: '16px 0 0 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Area Chart Basic</Typography>
             <div ref={graphContRef} className='area-chart-1__cont'></div>
-        </div>
+        </motion.div>
     )
 }
 

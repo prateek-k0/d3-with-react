@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import React from "react";
 import PieChartWithLabels from "./pie-chart-labels/PieChartWithLabelsComponent";
 import PieChartPercentageDistribution from "./pie-chart-percentage-distribution/PieChartComponent";
@@ -10,6 +10,7 @@ import ChordChartLabeled from "./chord-chart-labeled/ChordChartLabeledComponent"
 import Default404Component from "../../404Component";
 
 export const PieChartsRoutes = () => {
+    const location = useLocation();
     return useRoutes([
         {
             path: 'pie-chart-labels',
@@ -43,5 +44,5 @@ export const PieChartsRoutes = () => {
             path: '*',
             element: <Default404Component />
         },
-    ]);
+    ], location);
 }

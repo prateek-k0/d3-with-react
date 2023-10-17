@@ -8,6 +8,9 @@ import { Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import LoadingComp from '../../../Common/LoadingComponent/LoadingComponent';
 import ErrorComp from '../../../Common/ErrorComponent/ErrorComponent';
+import { motion } from 'framer-motion';
+import { pageTransitionConfig } from '../../../Common/AnimationConfig';
+
 
 const RidgelineChart = () => {
     const isDarkMode = useSelector(state => state.theme.darkMode);
@@ -105,12 +108,15 @@ const RidgelineChart = () => {
     const graphContRef = useD3(renderFunc, null, false);
 
     return (
-        <div className='area-chart__wrapper'>
+        <motion.div className='area-chart__wrapper' variants={pageTransitionConfig}
+        initial="start"
+        animate="animate"
+        exit="end">
             <Typography sx={{fontSize: '24px', padding: '16px 0 20px 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Ridgeline Chart</Typography>
             {(status === 'pending') && <LoadingComp loadingText={'Fetching data'}/>}
             {(status === 'rejected') && <ErrorComp errorText={'Error fetching data'} />}
             <div ref={graphContRef} className='area-chart__cont' ></div>
-        </div>
+        </motion.div>
     )
 }
 

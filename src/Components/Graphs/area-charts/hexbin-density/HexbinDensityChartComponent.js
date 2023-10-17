@@ -9,6 +9,9 @@ import * as d3Hexbin from "d3-hexbin";
 import { useSelector } from 'react-redux';
 import LoadingComp from '../../../Common/LoadingComponent/LoadingComponent';
 import ErrorComp from '../../../Common/ErrorComponent/ErrorComponent';
+import { motion } from 'framer-motion';
+import { pageTransitionConfig } from '../../../Common/AnimationConfig';
+
 
 const HexbinDensityChart = () => {
     const isDarkMode = useSelector(state => state.theme.darkMode);
@@ -93,12 +96,15 @@ const HexbinDensityChart = () => {
     const graphContRef = useD3(renderFunc, null, false);
 
     return (
-        <div className='area__wrapper'>
+        <motion.div className='area__wrapper' variants={pageTransitionConfig}
+        initial="start"
+        animate="animate"
+        exit="end">
             <Typography sx={{fontSize: '24px', padding: '16px 0 20px 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Hexbin Density Chart</Typography>
             {(status === 'pending') && <LoadingComp loadingText={'Fetching data'}/>}
             {(status === 'rejected') && <ErrorComp errorText={'Error fetching data'} />}
             <div ref={graphContRef} className='area__cont'></div>
-        </div>
+        </motion.div>
     )
 }
 

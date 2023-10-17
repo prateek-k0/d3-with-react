@@ -5,6 +5,8 @@ import '@fontsource/space-mono/400.css';
 import '@fontsource/abeezee/400.css'
 import { Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
+import { pageTransitionConfig } from '../../../Common/AnimationConfig';
 
 const data = [
     {
@@ -208,10 +210,13 @@ const DensityAreaChart = () => {
     const graphContRef = useD3(renderGraph, dataDep);
 
     return (
-        <div className='density-chart__wrapper'>
+        <motion.div className='density-chart__wrapper' variants={pageTransitionConfig}
+        initial="start"
+        animate="animate"
+        exit="end">
             <Typography sx={{fontSize: '24px', padding: '16px 0 0 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Density Chart</Typography>
             <div ref={graphContRef} className='density-chart__cont'></div>
-        </div>
+        </motion.div>
     )
 }
 

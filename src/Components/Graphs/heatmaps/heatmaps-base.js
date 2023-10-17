@@ -1,10 +1,11 @@
-import { useRoutes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import React from "react";
 import HeatmapBasic from "./heatmap-basic/HeatmapBasicComponent";
 import HeatmapWithTooltip from "./heatmap-tooltip/HeatmapTooltipComponent";
 import Default404Component from "../../404Component";
 
 export const HeatmapsRoutes = () => {
+    const location = useLocation();
     return useRoutes([
         {
             path: '*',
@@ -18,5 +19,5 @@ export const HeatmapsRoutes = () => {
             path: 'heatmap-with-tooltip',
             element: <HeatmapWithTooltip />
         },
-    ]);
+    ], location);
 }

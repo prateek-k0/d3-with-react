@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import React from "react";
 import BasicCircularPacking from "./BasicCircularPacking/BasicCircularPackingComponent";
 import BubbleForceSimulation from "./BubbleForceSimulation/BubbleForceSimulationComponent";
@@ -7,6 +7,7 @@ import BubbleChartScatterPlot from "./BubbleChartScatter/BubbleChartScatterCompo
 import Default404Component from "../../404Component";
 
 export const BubbleChartsRoutes = () => {
+    const location = useLocation();
     return useRoutes([
         {
             path: 'circular-packing-basic',
@@ -28,5 +29,5 @@ export const BubbleChartsRoutes = () => {
             path: '*',
             element: <Default404Component />
         },
-    ]);
+    ], location);
 }

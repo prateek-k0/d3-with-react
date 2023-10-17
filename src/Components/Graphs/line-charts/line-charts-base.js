@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import React from "react";
 import LineChartBasic from "./line-chart-basic/LineChartsBasic";
 import MultiLineChart from "./multi-line-chart/MultiLineChartComponent";
@@ -9,6 +9,7 @@ import MultipleCharts from "./multiple-charts/MultipleChartsComponent";
 import Default404Component from "../../404Component";
 
 export const LineChartsRoutes = () => {
+    const location = useLocation();
     return useRoutes([
         {
             path: 'line-chart-basic',
@@ -38,5 +39,5 @@ export const LineChartsRoutes = () => {
             path: '*',
             element: <Default404Component />
         },
-    ]);
+    ], location);
 }

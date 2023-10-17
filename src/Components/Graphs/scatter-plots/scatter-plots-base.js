@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import React from "react";
 import ScatterPlotBrush from "./scatter-plot-with-brush/ScatterPlotBrushComponent";
 import ScatterPlotBrushZoom from "./scatter-plot-brush-zoom/ScatterPlotBrushZoomComponent";
@@ -7,6 +7,7 @@ import ScatterPlotBasic from "./scatter-plot-basic/ScatterPlotBasicComponent";
 import Default404Component from "../../404Component";
 
 export const ScatterChartsRoutes = () => {
+    const location = useLocation();
     return useRoutes([
         {
             path: 'scatter-plot-brush',
@@ -28,5 +29,5 @@ export const ScatterChartsRoutes = () => {
             path: '*',
             element: <Default404Component />
         },
-    ]);
+    ], location);
 }

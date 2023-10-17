@@ -1,4 +1,4 @@
-import { useRoutes } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import React from "react";
 import BarChart from "./bar-chart-1/Bar-Chart-1";
 import StackedBarChartComponent from "./Stacked Bar Chart/StackedBarChartComponent";
@@ -9,6 +9,7 @@ import RacingBarChart from "./racing-bar-chart/RacingBarChartComponent";
 import Default404Component from "../../404Component";
 
 export const BarChartsRoutes = () => {
+    const location = useLocation();
     return useRoutes([
         {
             path: 'bar-chart-1',
@@ -38,5 +39,5 @@ export const BarChartsRoutes = () => {
             path: '*',
             element: <Default404Component />
         },
-    ])
+    ], location)
 }

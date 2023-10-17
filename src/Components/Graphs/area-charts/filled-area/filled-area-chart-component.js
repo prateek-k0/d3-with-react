@@ -5,6 +5,9 @@ import '@fontsource/space-mono/400.css';
 import '@fontsource/abeezee/400.css'
 import { Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
+import { pageTransitionConfig } from '../../../Common/AnimationConfig';
+
 
 const data = [
     {
@@ -198,10 +201,13 @@ const FilledAreaChart = () => {
     const graphContRef = useD3(renderFunc, dataDep);
 
     return (
-        <div className='filled-area-chart__wrapper'>
+        <motion.div className='filled-area-chart__wrapper' variants={pageTransitionConfig}
+        initial="start"
+        animate="animate"
+        exit="end">
             <Typography sx={{fontSize: '24px', padding: '16px 0 20px 36px', fontWeight: '700', fontFamily: '"ABeeZee", sans-serif'}}>Filled Area Chart</Typography>
             <div ref={graphContRef} className='filled-area-chart__cont'></div>
-        </div>
+        </motion.div>
     )
 }
 
