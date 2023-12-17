@@ -1,22 +1,27 @@
 import { useLocation, Routes, Route } from "react-router-dom";
-import React from "react";
-import HeatmapBasic from "./heatmap-basic/HeatmapBasicComponent";
-import HeatmapWithTooltip from "./heatmap-tooltip/HeatmapTooltipComponent";
-import Default404Component from "../../404Component";
+import React, { Suspense } from "react";
+import LoadingComp from "../../Common/LoadingComponent/LoadingComponent";
 
 const routes = [
-    { path: '*', element: <Default404Component /> },
-    { path: 'basic', element: <HeatmapBasic /> },
-    { path: 'heatmap-with-tooltip', element: <HeatmapWithTooltip /> },
+    { path: '*', element: import('../../404Component') },
+    { path: 'basic', element: import('./heatmap-basic/HeatmapBasicComponent') },
+    { path: 'heatmap-with-tooltip', element: import('./heatmap-tooltip/HeatmapTooltipComponent') },
 ]
 
 export const HeatmapsRoutes = () => {
     const location = useLocation();
     return (
         <Routes location={location} key={location.key}>
-            {routes.map((route) => (
-                <Route path={route.path} element={route.element} key={route.path} />
-            ))}
+            {routes.map((route) => {
+                const LazyElement = React.lazy(() => route.element);
+                return (
+                    <Route
+                        path={route.path}
+                        element={<Suspense fallback={<LoadingComp />}> <LazyElement /> </Suspense>}
+                        key={route.path} 
+                    />
+                )
+            })}
         </Routes>
     )
 }

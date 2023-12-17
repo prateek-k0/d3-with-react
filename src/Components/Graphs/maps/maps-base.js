@@ -1,24 +1,28 @@
 import { useLocation, Routes, Route } from "react-router-dom";
-import React from "react";
-import MapBasic from "./map-basic/MapBasicComponent";
-import ChoroplethMap from "./choropleth-map/ChoroplethMapComponent";
-import CountryMapIndia from "./Country Map - India/CountryMapComponent";
-import Default404Component from "../../404Component";
+import React, { Suspense } from "react";
+import LoadingComp from "../../Common/LoadingComponent/LoadingComponent";
 
 const routes = [
-    { path: '*', element: <Default404Component /> },
-    { path: 'basic', element: <MapBasic /> },
-    { path: 'choropleth', element: <ChoroplethMap /> },
-    { path: 'country-map-india', element: <CountryMapIndia /> },
+    { path: '*', element: import('../../404Component') },
+    { path: 'basic', element: import('./map-basic/MapBasicComponent') },
+    { path: 'choropleth', element: import('./choropleth-map/ChoroplethMapComponent') },
+    { path: 'country-map-india', element: import('./Country Map - India/CountryMapComponent') },
 ]
 
 export const MapsRoutes = () => {
     const location = useLocation();
     return (
         <Routes location={location} key={location.key}>
-            {routes.map((route) => (
-                <Route path={route.path} element={route.element} key={route.path} />
-            ))}
+            {routes.map((route) => {
+                const LazyElement = React.lazy(() => route.element);
+                return (
+                    <Route
+                        path={route.path}
+                        element={<Suspense fallback={<LoadingComp />}> <LazyElement /> </Suspense>}
+                        key={route.path} 
+                    />
+                )
+            })}
         </Routes>
     )
 }

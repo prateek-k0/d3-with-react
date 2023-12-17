@@ -1,30 +1,31 @@
 import { useLocation, Routes, Route } from "react-router-dom";
-import React from "react";
-import LineChartBasic from "./line-chart-basic/LineChartsBasic";
-import MultiLineChart from "./multi-line-chart/MultiLineChartComponent";
-import LineChartGradient from "./line-chart-gradient/LineChartGradientComponent";
-import LineChartBrushed from "./line-chart-brushed/LineChartBrushedComponent";
-import LineChartMultipleInputs from "./line-chart-multiple-input/LineChartMultipleInput";
-import MultipleCharts from "./multiple-charts/MultipleChartsComponent";
-import Default404Component from "../../404Component";
+import React, { Suspense } from "react";
+import LoadingComp from "../../Common/LoadingComponent/LoadingComponent";
 
 const routes = [
-    { path: 'line-chart-basic', element: <LineChartBasic /> },
-    { path: 'multi-line', element: <MultiLineChart /> },
-    { path: 'line-chart-gradient', element: <LineChartGradient /> },
-    { path: 'line-chart-brushed', element: <LineChartBrushed /> },
-    { path: 'line-chart-multiple-inputs', element: <LineChartMultipleInputs /> },
-    { path: 'multiple-charts', element: <MultipleCharts /> },
-    { path: '*', element: <Default404Component /> },
+    { path: 'line-chart-basic', element: import('./line-chart-basic/LineChartsBasic') },
+    { path: 'multi-line', element: import('./multi-line-chart/MultiLineChartComponent') },
+    { path: 'line-chart-gradient', element: import('./line-chart-gradient/LineChartGradientComponent') },
+    { path: 'line-chart-brushed', element: import('./line-chart-brushed/LineChartBrushedComponent') },
+    { path: 'line-chart-multiple-inputs', element: import('./line-chart-multiple-input/LineChartMultipleInput') },
+    { path: 'multiple-charts', element: import('./multiple-charts/MultipleChartsComponent') },
+    { path: '*', element: import('../../404Component') },
 ]
 
 export const LineChartsRoutes = () => {
     const location = useLocation();
     return (
         <Routes location={location} key={location.key}>
-            {routes.map((route) => (
-                <Route path={route.path} element={route.element} key={route.path} />
-            ))}
+            {routes.map((route) => {
+                const LazyElement = React.lazy(() => route.element);
+                return (
+                    <Route
+                        path={route.path}
+                        element={<Suspense fallback={<LoadingComp />}> <LazyElement /> </Suspense>}
+                        key={route.path} 
+                    />
+                )
+            })}
         </Routes>
     )
 }

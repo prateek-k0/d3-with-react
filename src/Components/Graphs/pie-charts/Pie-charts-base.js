@@ -1,32 +1,32 @@
 import { useLocation, Routes, Route } from "react-router-dom";
-import React from "react";
-import PieChartWithLabels from "./pie-chart-labels/PieChartWithLabelsComponent";
-import PieChartPercentageDistribution from "./pie-chart-percentage-distribution/PieChartComponent";
-import DonutChart from "./donut-chart/DonutChartComponent";
-import SunburstChart from "./sunburst-chart/SunburstChartComponent";
-import ZoomableSunburst from "./zoomable-sunburst/ZoomableSunburstComponent";
-import ChordChartColored from "./chord-chart-colored/ChordChartColoredComponent";
-import ChordChartLabeled from "./chord-chart-labeled/ChordChartLabeledComponent";
-import Default404Component from "../../404Component";
+import React, { Suspense } from "react";
+import LoadingComp from "../../Common/LoadingComponent/LoadingComponent";
 
 const routes = [
-    { path: 'pie-chart-labels', element: <PieChartWithLabels /> },
-    { path: 'pie-chart-perc-distribution', element: <PieChartPercentageDistribution /> },
-    { path: 'donut-chart', element: <DonutChart /> },
-    { path: 'sunburst-chart', element: <SunburstChart /> },
-    { path: 'zoomable-sunburst', element: <ZoomableSunburst /> },
-    { path: 'chord-colored', element: <ChordChartColored /> },
-    { path: 'chord-labeled', element: <ChordChartLabeled /> },
-    { path: '*', element: <Default404Component /> },
+    { path: 'pie-chart-labels', element: import('./pie-chart-labels/PieChartWithLabelsComponent') },
+    { path: 'pie-chart-perc-distribution', element: import('./pie-chart-percentage-distribution/PieChartComponent') },
+    { path: 'donut-chart', element: import('./donut-chart/DonutChartComponent') },
+    { path: 'sunburst-chart', element: import('./sunburst-chart/SunburstChartComponent') },
+    { path: 'zoomable-sunburst', element: import('./chord-chart-colored/ChordChartColoredComponent') },
+    { path: 'chord-colored', element: import('./chord-chart-colored/ChordChartColoredComponent') },
+    { path: 'chord-labeled', element: import('./chord-chart-labeled/ChordChartLabeledComponent') },
+    { path: '*', element: import('../../404Component') },
 ];
 
 export const PieChartsRoutes = () => {
     const location = useLocation();
     return (
         <Routes location={location} key={location.key}>
-            {routes.map((route) => (
-                <Route path={route.path} element={route.element} key={route.path} />
-            ))}
+            {routes.map((route) => {
+                const LazyElement = React.lazy(() => route.element);
+                return (
+                    <Route
+                        path={route.path}
+                        element={<Suspense fallback={<LoadingComp />}> <LazyElement /> </Suspense>}
+                        key={route.path} 
+                    />
+                )
+            })}
         </Routes>
     );
 }

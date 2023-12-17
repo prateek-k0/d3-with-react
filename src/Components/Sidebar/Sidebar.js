@@ -47,7 +47,11 @@ export default function SidebarDrawer() {
   const [expandedAcc, setExpandedAcc] = useState(false);
   
   const handleChange = useCallback((panelKey) => (event, isExpanded) => {
-    setExpandedAcc(isExpanded ? panelKey : false);
+    if (isExpanded) {
+      setExpandedAcc(panelKey);
+    } else {
+      setExpandedAcc(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -114,8 +118,10 @@ export default function SidebarDrawer() {
     </Box>
   );
 
+  const onClose = useCallback(() => dispatch(toggleOrSetSidebar(false)), [dispatch]);
+
   return (
-        <DrawerComponent anchor='left' open={sideBarStatus} onClose={() => dispatch(toggleOrSetSidebar(false))}>
+        <DrawerComponent anchor='left' open={sideBarStatus} onClose={onClose}>
             {list()}
         </DrawerComponent>
   );

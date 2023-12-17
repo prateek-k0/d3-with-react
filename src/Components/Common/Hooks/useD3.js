@@ -20,7 +20,7 @@ export const useD3 = ((renderFunc, dependencies, resizeable = true, onCleanup = 
        
         // return cleanup function
         return () => {
-            console.log('inside useD3 cleanup');
+            // console.log('inside useD3 cleanup');
             // onCleanup callback
             onCleanup && onCleanup();
             // remove inner content when this function is run

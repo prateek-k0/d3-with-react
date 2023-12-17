@@ -1,26 +1,29 @@
 import { useLocation, Route, Routes } from "react-router-dom";
-import React from "react";
-import BasicCircularPacking from "./BasicCircularPacking/BasicCircularPackingComponent";
-import BubbleForceSimulation from "./BubbleForceSimulation/BubbleForceSimulationComponent";
-import ZoomableCircularPacking from "./ZoomableCircularPacking/ZoomableCircularPackingComponent";
-import BubbleChartScatterPlot from "./BubbleChartScatter/BubbleChartScatterComponent";
-import Default404Component from "../../404Component";
+import React, { Suspense } from "react";
+import LoadingComp from "../../Common/LoadingComponent/LoadingComponent";
 
 const routes = [
-    { path: 'circular-packing-basic', element: <BasicCircularPacking /> },
-    { path: 'bubble-force-simulation', element: <BubbleForceSimulation /> },
-    { path: 'circular-pack-zoom', element: <ZoomableCircularPacking /> },
-    { path: 'bubble-scatter-plot', element: <BubbleChartScatterPlot /> },
-    { path: '*', element: <Default404Component /> },
+    { path: 'circular-packing-basic', element: import('./BasicCircularPacking/BasicCircularPackingComponent') },
+    { path: 'bubble-force-simulation', element: import('./BubbleForceSimulation/BubbleForceSimulationComponent') },
+    { path: 'circular-pack-zoom', element: import('./ZoomableCircularPacking/ZoomableCircularPackingComponent') },
+    { path: 'bubble-scatter-plot', element: import('./BubbleChartScatter/BubbleChartScatterComponent') },
+    { path: '*', element: import('../../404Component') },
 ]
 
 export const BubbleChartsRoutes = () => {
     const location = useLocation();
     return (
         <Routes location={location} key={location.key}>
-            {routes.map((route) => (
-                <Route path={route.path} element={route.element} key={route.path} />
-            ))}
+            {routes.map((route) => {
+                const LazyElement = React.lazy(() => route.element);
+                return (
+                    <Route
+                        path={route.path}
+                        element={<Suspense fallback={<LoadingComp />}> <LazyElement /> </Suspense>}
+                        key={route.path} 
+                    />
+                )
+            })}
         </Routes>
     )
 }

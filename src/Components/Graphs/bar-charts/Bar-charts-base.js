@@ -1,30 +1,31 @@
 import { useLocation, Route, Routes } from "react-router-dom";
-import React from "react";
-import BarChart from "./bar-chart-1/Bar-Chart-1";
-import StackedBarChartComponent from "./Stacked Bar Chart/StackedBarChartComponent";
-import ClusteredBarChart from "./clustered-bar-chart/ClusteredBarChartComponent";
-import HorizontalBarChart from "./horizontal-bar-chart/HorizontalBarChartComponet";
-import DottedBarChart from "./dotted-bar-charts/DottedBarChartComponent";
-import RacingBarChart from "./racing-bar-chart/RacingBarChartComponent";
-import Default404Component from "../../404Component";
+import React, { Suspense } from "react";
+import LoadingComp from "../../Common/LoadingComponent/LoadingComponent";
 
 const routes = [
-    { path: 'bar-chart-1', element: <BarChart /> },
-    { path: 'stacked-bar-chart', element: <StackedBarChartComponent /> },
-    { path: 'clustered-bar-chart', element: <ClusteredBarChart /> },
-    { path: 'horizontal-bar-chart', element: <HorizontalBarChart /> },
-    { path: 'dotted-bar-chart', element: <DottedBarChart /> },
-    { path: 'racing', element: <RacingBarChart /> },
-    { path: '*', element: <Default404Component /> },
+    { path: 'bar-chart-1', element: import('./bar-chart-1/Bar-Chart-1') },
+    { path: 'stacked-bar-chart', element: import('./Stacked Bar Chart/StackedBarChartComponent') },
+    { path: 'clustered-bar-chart', element: import('./clustered-bar-chart/ClusteredBarChartComponent') },
+    { path: 'horizontal-bar-chart', element: import('./horizontal-bar-chart/HorizontalBarChartComponet') },
+    { path: 'dotted-bar-chart', element: import('./dotted-bar-charts/DottedBarChartComponent') },
+    { path: 'racing', element: import('./racing-bar-chart/RacingBarChartComponent') },
+    { path: '*', element: import('../../404Component') },
 ]
 
 export const BarChartsRoutes = () => {
     const location = useLocation();
     return (
         <Routes location={location} key={location.key}>
-            {routes.map((route) => (
-                <Route path={route.path} element={route.element} key={route.path} />
-            ))}
+            {routes.map((route) => {
+                const LazyElement = React.lazy(() => route.element);
+                return (
+                    <Route
+                        path={route.path}
+                        element={<Suspense fallback={<LoadingComp />}> <LazyElement /> </Suspense>}
+                        key={route.path} 
+                    />
+                )
+            })}
         </Routes>
     )
 }
