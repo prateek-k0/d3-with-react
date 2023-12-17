@@ -1,4 +1,4 @@
-import { useLocation, useRoutes } from "react-router-dom";
+import { useLocation, Routes, Route } from "react-router-dom";
 import React from "react";
 import PieChartWithLabels from "./pie-chart-labels/PieChartWithLabelsComponent";
 import PieChartPercentageDistribution from "./pie-chart-percentage-distribution/PieChartComponent";
@@ -9,40 +9,24 @@ import ChordChartColored from "./chord-chart-colored/ChordChartColoredComponent"
 import ChordChartLabeled from "./chord-chart-labeled/ChordChartLabeledComponent";
 import Default404Component from "../../404Component";
 
+const routes = [
+    { path: 'pie-chart-labels', element: <PieChartWithLabels /> },
+    { path: 'pie-chart-perc-distribution', element: <PieChartPercentageDistribution /> },
+    { path: 'donut-chart', element: <DonutChart /> },
+    { path: 'sunburst-chart', element: <SunburstChart /> },
+    { path: 'zoomable-sunburst', element: <ZoomableSunburst /> },
+    { path: 'chord-colored', element: <ChordChartColored /> },
+    { path: 'chord-labeled', element: <ChordChartLabeled /> },
+    { path: '*', element: <Default404Component /> },
+];
+
 export const PieChartsRoutes = () => {
     const location = useLocation();
-    return useRoutes([
-        {
-            path: 'pie-chart-labels',
-            element: <PieChartWithLabels />
-        },
-        {
-            path: 'pie-chart-perc-distribution',
-            element: <PieChartPercentageDistribution />
-        },
-        {
-            path: 'donut-chart',
-            element: <DonutChart />
-        },
-        {
-            path: 'sunburst-chart',
-            element: <SunburstChart />
-        },
-        {
-            path: 'zoomable-sunburst',
-            element: <ZoomableSunburst />
-        },
-        {
-            path: 'chord-colored',
-            element: <ChordChartColored />
-        },
-        {
-            path: 'chord-labeled',
-            element: <ChordChartLabeled />
-        },
-        {
-            path: '*',
-            element: <Default404Component />
-        },
-    ], location);
+    return (
+        <Routes location={location} key={location.key}>
+            {routes.map((route) => (
+                <Route path={route.path} element={route.element} key={route.path} />
+            ))}
+        </Routes>
+    );
 }

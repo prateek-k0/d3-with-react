@@ -1,4 +1,4 @@
-import { useLocation, useRoutes } from "react-router-dom";
+import { useLocation, Route, Routes } from "react-router-dom";
 import React from "react";
 import BarChart from "./bar-chart-1/Bar-Chart-1";
 import StackedBarChartComponent from "./Stacked Bar Chart/StackedBarChartComponent";
@@ -8,36 +8,23 @@ import DottedBarChart from "./dotted-bar-charts/DottedBarChartComponent";
 import RacingBarChart from "./racing-bar-chart/RacingBarChartComponent";
 import Default404Component from "../../404Component";
 
+const routes = [
+    { path: 'bar-chart-1', element: <BarChart /> },
+    { path: 'stacked-bar-chart', element: <StackedBarChartComponent /> },
+    { path: 'clustered-bar-chart', element: <ClusteredBarChart /> },
+    { path: 'horizontal-bar-chart', element: <HorizontalBarChart /> },
+    { path: 'dotted-bar-chart', element: <DottedBarChart /> },
+    { path: 'racing', element: <RacingBarChart /> },
+    { path: '*', element: <Default404Component /> },
+]
+
 export const BarChartsRoutes = () => {
     const location = useLocation();
-    return useRoutes([
-        {
-            path: 'bar-chart-1',
-            element: <BarChart />
-        },
-        {
-            path: 'stacked-bar-chart',
-            element: <StackedBarChartComponent />
-        },
-        {
-            path: 'clustered-bar-chart',
-            element: <ClusteredBarChart />
-        },
-        {
-            path: 'horizontal-bar-chart',
-            element: <HorizontalBarChart />
-        },
-        {
-            path: 'dotted-bar-chart',
-            element: <DottedBarChart />
-        },
-        {
-            path: 'racing',
-            element: <RacingBarChart />
-        },
-        {
-            path: '*',
-            element: <Default404Component />
-        },
-    ], location)
+    return (
+        <Routes location={location} key={location.key}>
+            {routes.map((route) => (
+                <Route path={route.path} element={route.element} key={route.path} />
+            ))}
+        </Routes>
+    )
 }

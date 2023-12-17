@@ -1,4 +1,4 @@
-import { useLocation, useRoutes } from "react-router-dom";
+import { useLocation, Routes, Route } from "react-router-dom";
 import React from "react";
 import LineChartBasic from "./line-chart-basic/LineChartsBasic";
 import MultiLineChart from "./multi-line-chart/MultiLineChartComponent";
@@ -8,36 +8,23 @@ import LineChartMultipleInputs from "./line-chart-multiple-input/LineChartMultip
 import MultipleCharts from "./multiple-charts/MultipleChartsComponent";
 import Default404Component from "../../404Component";
 
+const routes = [
+    { path: 'line-chart-basic', element: <LineChartBasic /> },
+    { path: 'multi-line', element: <MultiLineChart /> },
+    { path: 'line-chart-gradient', element: <LineChartGradient /> },
+    { path: 'line-chart-brushed', element: <LineChartBrushed /> },
+    { path: 'line-chart-multiple-inputs', element: <LineChartMultipleInputs /> },
+    { path: 'multiple-charts', element: <MultipleCharts /> },
+    { path: '*', element: <Default404Component /> },
+]
+
 export const LineChartsRoutes = () => {
     const location = useLocation();
-    return useRoutes([
-        {
-            path: 'line-chart-basic',
-            element: <LineChartBasic />
-        },
-        {
-            path: 'multi-line',
-            element: <MultiLineChart />
-        },
-        {
-            path: 'line-chart-gradient',
-            element: <LineChartGradient />
-        },
-        {
-            path: 'line-chart-brushed',
-            element: <LineChartBrushed />
-        },
-        {
-            path: 'line-chart-multiple-inputs',
-            element: <LineChartMultipleInputs />
-        },
-        {
-            path: 'multiple-charts',
-            element: <MultipleCharts />
-        },
-        {
-            path: '*',
-            element: <Default404Component />
-        },
-    ], location);
+    return (
+        <Routes location={location} key={location.key}>
+            {routes.map((route) => (
+                <Route path={route.path} element={route.element} key={route.path} />
+            ))}
+        </Routes>
+    )
 }
