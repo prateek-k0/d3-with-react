@@ -16,7 +16,7 @@ const routes = [
 export const PieChartsRoutes = () => {
     const location = useLocation();
     return (
-        <Routes location={location} key={location.key}>
+        <Routes location={location} key={location.pathname}>
             {routes.map((route) => {
                 const LazyElement = React.lazy(() => route.element);
                 return (

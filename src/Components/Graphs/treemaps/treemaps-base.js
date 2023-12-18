@@ -7,7 +7,7 @@ const routes = [
     { path: 'basic', element: import('./treemap-basic/TreemapBasicComponent') },
 ]
 
-const delayedPromise = (promise, delay = 1000) => {
+const delayedPromise = (promise, delay = 1000) => { // for demo purposes only
     return new Promise((resolve) => {
         setTimeout(() => resolve(promise), delay);
     })
@@ -16,7 +16,7 @@ const delayedPromise = (promise, delay = 1000) => {
 export const TreemapsRoutes = () => {
     const location = useLocation();
     return (
-        <Routes location={location} key={location.key}>
+        <Routes location={location} key={location.pathname}>
             {routes.map((route) => {
                 const LazyElement = React.lazy(() => delayedPromise(route.element, 1000));
                 return (

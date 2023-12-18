@@ -17,34 +17,29 @@ import { TreemapsRoutes } from "./Components/Graphs/treemaps/treemaps-base";
 import HomepageComponent from "./Components/Home";
 import Default404Component from "./Components/404Component";
 
-const routes = [
-  { index: true, element: <HomepageComponent />, },
-  { path: 'bar-charts/*', element: <BarChartsRoutes /> }, //Decendant Routes: https://www.robinwieruch.de/react-router-descendant-routes/
-  { path: 'pie-charts/*', element: <PieChartsRoutes /> },
-  { path: 'area-charts/*', element: <AreaChartsRoutes /> },
-  { path: 'bubble-charts/*', element: <BubbleChartsRoutes /> },
-  { path: 'scatter-plots/*', element: <ScatterChartsRoutes /> },
-  { path: 'arc-diagrams/*', element: <ArcChartsRoutes /> },
-  { path: 'line-charts/*', element: <LineChartsRoutes /> },
-  { path: 'histograms/*', element: <HistogramsRoutes /> },
-  { path: 'heatmaps/*', element: <HeatmapsRoutes /> },
-  { path: 'treemaps/*', element: <TreemapsRoutes /> },
-  { path: 'maps/*', element: <MapsRoutes /> },
-  { path: '*', element: <Default404Component /> },
-]
-
 const AppRoutes = () => {
   const location = useLocation();
   return (
-    <Routes location={location} key={location.key}>
-        <Route path={'/'} element={<AppLayout />} key='/'>
-        {routes.map((route) => (
-            <Route path={route?.path ?? undefined} element={route.element} key={route.path ?? 'index-route'} index={route?.index ?? false} />
-        ))}
-        </Route>
+    <Routes location={location} key={location.pathname}>
+      <Route path='/' element={<AppLayout />}>  {/* Base path - render layout */}
+        <Route index={true} element={<HomepageComponent />} /> {/* index path - render homepage */}
+        <Route path='bar-charts/*' element={<BarChartsRoutes />} />   {/* //Descendant Routes: https://www.robinwieruch.de/react-router-descendant-routes/ */}
+        <Route path='pie-charts/*' element={<PieChartsRoutes />} />
+        <Route path='area-charts/*' element={<AreaChartsRoutes />} />
+        <Route path='bubble-charts/*' element={<BubbleChartsRoutes />} />
+        <Route path='scatter-plots/*' element={<ScatterChartsRoutes />} />
+        <Route path='arc-diagrams/*' element={<ArcChartsRoutes />} />
+        <Route path='line-charts/*' element={<LineChartsRoutes />} />
+        <Route path='histograms/*' element={<HistogramsRoutes />} />
+        <Route path='heatmaps/*' element={<HeatmapsRoutes />} />
+        <Route path='treemaps/*' element={<TreemapsRoutes />} />
+        <Route path='maps/*' element={<MapsRoutes />} />
+        <Route path='*' element={<Default404Component />} />
+      </Route>
     </Routes>
   )
 }
+
 
 const App = () => {
   return (
